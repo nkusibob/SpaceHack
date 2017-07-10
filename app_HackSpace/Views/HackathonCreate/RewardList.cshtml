@@ -1,0 +1,49 @@
+﻿@model List<app_HackSpace.Models.Reward>
+
+@{
+    ViewBag.Title = "Reward";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Step 6 : Reward</h2>
+
+<p>@ViewBag.nameFacil</p>
+<p>@ViewBag.nameTheme</p>
+<p>@ViewBag.nameProg</p>
+<p>@ViewBag.nameLoc</p>
+<p>@ViewBag.nameExpert</p>
+
+@using (Html.BeginForm("RewardList", "HackathonCreate", FormMethod.Post))
+{
+    for (var i = 0; i < Model.Count(); i++)
+    {
+        @Html.HiddenFor(model => model[i].idReward)
+        @Html.HiddenFor(model => model[i].nameReward)
+
+        <div>
+            <div>
+                @Html.DisplayFor(model => model[i].nameReward)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].descReward)
+            </div>
+            <div>
+                @Html.CheckBoxFor(model => model[i].IsSelected, new { @class = "selected" })
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Previous" name="btnPrevious" />
+            <input type="submit" class="btn btn-default" value="Next" onclick="return testcheck()" name="btnNext" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.ActionLink("Add", "RewardAdd", "HackathonAdd")
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/checkbox/checkboxTest.js"></script>

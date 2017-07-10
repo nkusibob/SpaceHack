@@ -1,0 +1,11 @@
+﻿
+@{
+    ViewBag.Title = "RedirectHack";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Vous êtes déjà inscrit à hackathon @ViewBag.nameHack</h2>
+
+<div>
+    @Html.ActionLink("Continuer", "RedirectHack2", new { id = ViewBag.hackathonId })
+</div>

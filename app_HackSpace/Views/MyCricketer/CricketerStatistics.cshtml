@@ -1,0 +1,72 @@
+﻿@model app_HackSpace.Models.CricketerStatistics
+@{
+    ViewBag.Title = "Cricketer Statistics";
+}
+
+<h2>Cricketer Statistics</h2>
+
+@using (Html.BeginForm("CricketerStatistics", "MyCricketer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Step 2: Cricketer Statistics</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OdiRuns, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.OdiRuns)
+                @Html.ValidationMessageFor(model => model.OdiRuns)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TestRuns, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.TestRuns)
+                @Html.ValidationMessageFor(model => model.TestRuns)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Century, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Century)
+                @Html.ValidationMessageFor(model => model.Century)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HalfCentury, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.HalfCentury)
+                @Html.ValidationMessageFor(model => model.HalfCentury)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Wickets, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Wickets)
+                @Html.ValidationMessageFor(model => model.Wickets)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Catches, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Catches)
+                @Html.ValidationMessageFor(model => model.Catches)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="BtnPrevious" value="Previous" class="btn btn-default" />
+                <input type="submit" name="BtnNext" value="Finish" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

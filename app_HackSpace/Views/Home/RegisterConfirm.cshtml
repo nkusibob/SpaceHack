@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "RegisterConfirm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Voulez vous vous inscrire à hackathon @ViewBag.nameHack</h2>
+
+<div>
+    @Html.ActionLink("Non", "SelectHack", new { id = ViewBag.hackathonId })
+</div>
+<div>
+    @Html.ActionLink("Oui", "RegisterHack2", new { id = ViewBag.hackathonId })
+</div>

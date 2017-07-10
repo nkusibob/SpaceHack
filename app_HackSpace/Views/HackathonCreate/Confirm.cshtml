@@ -1,0 +1,38 @@
+﻿@model app_HackSpace.Models.ViewModels.HackathonModel
+
+@{
+    ViewBag.Title = "Success";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Confirmer votre choix</h2>
+
+<p>@ViewBag.nameFacil</p>
+<p>@ViewBag.nameTheme</p>
+<p>@ViewBag.nameProg</p>
+<p>@ViewBag.nameLoc</p>
+<p>@ViewBag.nameExpert</p>
+<p>@ViewBag.nameReward</p>
+<p>@ViewBag.nameSponsor</p>
+<p>@ViewBag.nameGoodie</p>
+
+@using (Html.BeginForm("SaveAllHack", "HackathonCreate", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(m => m.nameHack, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.nameHack, new { @class = "form-control", required = "" })
+            @Html.ValidationMessageFor(m => m.nameHack, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Previous" name="btnPrevious" />
+            <input type="submit" class="btn btn-default" value="Save All" name="btnNext"/>
+        </div>
+    </div>
+}

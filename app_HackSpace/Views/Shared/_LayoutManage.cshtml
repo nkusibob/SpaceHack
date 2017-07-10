@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HackSpace</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+
+</head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("HackSpace", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="btn-primary">@Html.ActionLink("Register", "", "")</li>
+                    <li>@Html.ActionLink("Explore", "Explore", "Explore")</li>
+                    <li>@Html.ActionLink("Pitch", "Pitch", "Pitch")</li>
+                    <li>@Html.ActionLink("Match", "Match", "Match")</li>
+                    <li>@Html.ActionLink("Deliver", "Deliver", "Deliver")</li>
+                    @*<li>@Html.ActionLink("Ask", "Ask", "Ask")</li>*@
+                    <li>@Html.ActionLink("Launch", "Launch", "Launch")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+       
+    
+    <!-- body render STARTS HERE -->
+
+    
+        @RenderBody()
+       
+
+    <!-- END body render  -->
+
+
+
+
+        <!-- FOOTER STARTS HERE -->
+        <div class="container">
+
+            <footer>
+                <hr />
+
+                <p>&copy; @DateTime.Now.Year - My HackSpace Application</p>
+            </footer>
+
+        </div>
+
+
+        <!-- END FOOTER -->
+
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

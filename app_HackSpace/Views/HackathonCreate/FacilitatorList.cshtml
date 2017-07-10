@@ -1,0 +1,54 @@
+﻿@*@model IEnumerable<app_HackSpace.Models.Facilitator>*@
+
+@model List<app_HackSpace.Models.Facilitator>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Step 1 : Facilitator</h2>
+
+@using (Html.BeginForm("FacilitatorList", "HackathonCreate", FormMethod.Post))
+{
+    for (var i = 0; i < Model.Count(); i++)
+    {
+        @Html.HiddenFor(model => model[i].idFacilitator)
+        @Html.HiddenFor(model => model[i].C_Profile.lastname)
+        @Html.HiddenFor(model => model[i].C_Profile.firstname)
+
+        <div>
+            <div>
+                @Html.DisplayFor(model => model[i].C_Profile.mail)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].C_Profile.lastname)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].C_Profile.firstname)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].availabilities)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].bio)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].hourly_rate)
+            </div>
+            <div>
+                @Html.CheckBoxFor(model => model[i].IsSelected, new { @class = "selected" })
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Next" onclick="return testcheck()" name="btnNext" />
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/checkbox/checkboxTest.js"></script>
+<script src="~/Scripts/checkbox/checkboxSelected.js"></script>

@@ -1,0 +1,83 @@
+﻿@model app_HackSpace.Models.ViewModels.HackathonModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- hack detail starts here -->
+
+<div class="container">
+
+    <h2>@ViewBag.nameHack</h2>
+
+
+    <h3>Theme :</h3>
+    @foreach (var item in Model.hackathon)
+    {
+        <div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Theme.nameTheme)
+            </div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Theme.descTheme)
+            </div>
+        </div>
+    }
+
+    <h3>Program :</h3>
+    @foreach (var item in Model.hackathon)
+    {
+        <div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Program.nameProg)
+            </div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Program.descProg)
+            </div>
+        </div>
+    }
+
+    <h3>Location :</h3>
+    @foreach (var item in Model.hackathon)
+    {
+        <div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Location_.nameLoc)
+            </div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Location_.descLoc)
+            </div>
+        </div>
+    }
+
+    <h3>Expert :</h3>
+    @foreach (var item in Model.Has_expert)
+    {
+        <div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Expert.C_Profile.lastname)
+                @Html.DisplayFor(modelItem => item.Expert.C_Profile.firstname)
+            </div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Expert.expertise)
+            </div>
+        </div>
+    }
+
+    <h3>Sponsor :</h3>
+    @foreach (var item in Model.Has_sponsor)
+    {
+        <div>
+            <div>
+                @Html.DisplayFor(modelItem => item.Sponsor.C_Profile.lastname)
+                @Html.DisplayFor(modelItem => item.Sponsor.C_Profile.firstname)
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Select / Register", "RegisterHack", new { id = ViewBag.hackathonId })
+    </div>
+
+</div>

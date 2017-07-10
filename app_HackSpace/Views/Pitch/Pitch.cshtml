@@ -1,0 +1,45 @@
+﻿@model app_HackSpace.Models.ViewModels.ManageModel
+
+@{
+    ViewBag.Title = "Pitch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.nameHack</h2>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Manage", "RedirectSelectHack", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Explore", "RedirectExplore", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Pitch", "Pitch", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Match", "RedirectMatch", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Deliver", "RedirectDeliver", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Launch", "RedirectLaunch", new { id = ViewBag.hackathonId })</li>
+    </ul>
+</div>
+
+<h4>Pitch</h4>
+
+<div>
+    @Html.ActionLink("Pitch ideas", "PitchUpload", new { id = ViewBag.hackathonId, nameHack = ViewBag.nameHack })
+</div>
+
+@foreach (var item in Model.pitch)
+{
+    <div>
+        <div>
+            <div>
+                @Html.DisplayFor(modelItem => item.title)
+            </div>
+            <video width="320" height="240" controls="">
+                <source src="@item.video" type="video/mp4">
+                <source src="@item.video" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div>
+            @Html.ActionLink("Edit", "PitchEdit", new { id = item.idPitch, url = item.video }) |
+            @Html.ActionLink("Delete", "PitchDelete", new { id = item.idPitch, url = item.video })
+        </div>
+    </div>
+}

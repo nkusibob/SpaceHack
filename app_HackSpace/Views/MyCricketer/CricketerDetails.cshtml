@@ -1,0 +1,71 @@
+﻿@model app_HackSpace.Models.CricketerDetails
+@{
+    ViewBag.Title = "Cricketer Details";
+}
+
+<h2>Cricketer Details</h2>
+
+@using (Html.BeginForm("CricketerDetails", "MyCricketer", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Step 1: Cricketer Details</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ID)
+                @Html.ValidationMessageFor(model => model.ID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name_, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name_)
+                @Html.ValidationMessageFor(model => model.Name_)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FullName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.FullName)
+                @Html.ValidationMessageFor(model => model.FullName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Age)
+                @Html.ValidationMessageFor(model => model.Age)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Team, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Team)
+                @Html.ValidationMessageFor(model => model.Team)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IsSelected, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.IsSelected)
+                @Html.ValidationMessageFor(model => model.IsSelected)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="BtnNext" value="Next" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

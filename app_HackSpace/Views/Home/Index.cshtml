@@ -1,0 +1,88 @@
+﻿@model IEnumerable<app_HackSpace.Models.Hackathon>
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" src="~/Scripts/Filtrer.js"></script>
+<div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+
+        <div class="tbd" id="jumbotron_content">
+
+            <h1>Find your next hacking space</h1>
+            <p class="lead"></p>
+          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Search &raquo;</button>
+          <div id="demo" class="collapse">
+            <div align="center">
+              <button class="btn btn-default filter-button"  data-filter="all">All</button>
+              <button class="btn btn-default filter-button"  data-filter="Sharing ">Sharing </button>
+              <button class="btn btn-default filter-button"  data-filter="Digital">Digital </button>
+              <button class="btn btn-default filter-button"  data-filter="SexTech">SexTech</button>
+
+            </div>
+          </div>
+            
+        </div>
+      </div>
+ </div>
+
+
+
+<section id="tbc">
+    <div class="container">
+            <div class="col-lg-12 text-center">
+                <h1>Coming Hackathons in Belgium</h1>
+            </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+          
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                  <div class="myfilter">
+                  <div  id="nameTheme" class= '@(@Html.DisplayFor(modelItem => item.Theme.nameTheme)) &nbsp filter'>
+
+                    <div class="tbc">
+                        <div class="hackimg">
+                            <img src="http://via.placeholder.com/600x250" class="img-responsive" />
+                        </div>
+                        <div class="title" style="font-weight: bold; font-size:1.2em;">
+                            @Html.DisplayFor(modelItem => item.nameHack)
+                        </div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Facilitator.C_Profile.lastname)
+                            @Html.DisplayFor(modelItem => item.Facilitator.C_Profile.firstname)
+                        </div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Location_.nameLoc)
+                        </div>
+                        <div>
+                            @Html.DisplayNameFor(model => model.Program.nameProg)
+                        </div>
+                      
+                        <div >
+
+                          @Html.DisplayFor(modelItem => item.Theme.nameTheme)
+                        </div>
+                     
+                        <div>
+                            @Html.ActionLink("Select", "SelectHack", new { id = item.idHackathon })
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                 </div>
+            }
+          </div>
+        </div>
+    
+
+
+</section>
+
+
+

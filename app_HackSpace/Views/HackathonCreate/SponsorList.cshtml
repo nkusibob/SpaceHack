@@ -1,0 +1,57 @@
+﻿@model List<app_HackSpace.Models.Sponsor>
+
+@{
+    ViewBag.Title = "Sponsor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Step 7 : Sponsor</h2>
+
+<p>@ViewBag.nameFacil</p>
+<p>@ViewBag.nameTheme</p>
+<p>@ViewBag.nameProg</p>
+<p>@ViewBag.nameLoc</p>
+<p>@ViewBag.nameExpert</p>
+<p>@ViewBag.nameReward</p>
+
+@using (Html.BeginForm("SponsorList", "HackathonCreate", FormMethod.Post))
+{
+    for (var i = 0; i < Model.Count(); i++)
+    {
+        @Html.HiddenFor(model => model[i].idSponsor)
+        @Html.HiddenFor(model => model[i].C_Profile.lastname)
+        @Html.HiddenFor(model => model[i].C_Profile.firstname)
+
+        <div>
+            <div>
+                @Html.DisplayFor(model => model[i].C_Profile.lastname)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].C_Profile.firstname)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].logo)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].max_budget)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].prefer_thematic)
+            </div>
+            <div>
+                @Html.DisplayFor(model => model[i].needs)
+            </div>
+            <div>
+                @Html.CheckBoxFor(model => model[i].IsSelected, new { @class = "selected" })
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" class="btn btn-default" value="Previous" name="btnPrevious" />
+            <input type="submit" class="btn btn-default" value="Next" onclick="return testcheck()" name="btnNext" />
+        </div>
+    </div>
+}
+
+<script src="~/Scripts/checkbox/checkboxTest.js"></script>

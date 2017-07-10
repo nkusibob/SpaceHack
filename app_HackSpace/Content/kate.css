@@ -1,0 +1,208 @@
+
+
+@font-face {
+    font-family: 'Brandon Grotesque';
+    src: url(./fonts/BrandonGrotesque-Regular.woff);
+}
+
+
+@font-face {
+    font-family: 'Brandon Grotesque Bold';
+    src: url(./fonts/BrandonGrotesque-Bold.woff);
+}
+
+
+body {
+    font-family: 'Brandon Grotesque', sans-serif;
+}
+
+
+
+h1, h2, h3 {
+    font-family: 'Brandon Grotesque Bold', sans-serif;
+    font-weight: bold;
+}
+
+
+a {
+    color: #428bca;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #0cf !important;
+    }
+
+.body-content {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+
+.container.body-content {
+}
+
+
+
+.navbar-inverse .navbar-nav > li > a {
+    font-family: 'Brandon Grotesque', sans-serif !important;
+    font-size: 17px !important;
+    color: #FFFFFF !important;
+    text-align: center;
+}
+
+
+.navbar-inverse .navbar-nav > li > a:hover {
+       color: #0cf !important; 
+}
+
+
+.navbar-inverse .navbar-brand {
+    font-weight: bold;
+}
+
+ul.nav.navbar-nav {
+    
+    font-size: 16px;
+
+}
+
+
+.secondaryNav {
+    background-color: #0cf;
+    color: #fff;
+}
+
+.secondaryNav .navbar-nav {
+    width: 100%;
+    text-align: center;
+  }
+
+.secondaryNav .navbar-nav> li {
+      float: none;
+      display: inline-block;
+    }
+
+
+.secondaryNav a {
+        color: #fff;
+
+}
+
+
+ .secondaryNav li.active {
+        background-color:  #fff;
+
+}
+
+
+.btn-primary, .btn-lg {
+    background-color: #0cf !important;
+    /*border-radius: 5px;*/
+    border-color: transparent !important;
+}
+
+.image-bg-fluid-height {
+    background: url(../Content/Images/hackspace-bg.jpg) no-repeat center center scroll;
+    padding: 100px 0;
+}
+
+
+
+
+.jumbotron {
+    background: url(../Content/Images/hackspace-bg.jpg) no-repeat;
+    background-position: center !important;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    text-align: center;
+    border-radius: 0 !important;
+    background-size: cover;
+}
+
+
+.jumbotron h1 {
+    color: #0cf !important;
+    text-shadow: none !important;
+    font-size: 40px !important;
+    background-color: #fff;
+    padding-bottom: 20px;
+}
+
+#jumbotron_content {
+    width: auto;
+    height: auto;
+    background-color: #fff;
+    opacity: 0.9;
+    padding: 20px;
+}
+
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.form-section form .input-group {
+    width: 100%;
+    padding: 0 4px;
+}
+
+
+.form-section .btn-primary {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+}
+
+.col-centered {
+    display: inline-block;
+    
+}
+.tbc {
+    padding: 20px ;
+    border: 1px solid #efeeee;
+    margin-bottom: 30px;
+}
+
+.tbc .details {
+    position: absolute;
+    z-index: 2;
+    top: 30px;
+    right: 50px;
+    color: #0cf;
+    background-color: #fff;
+    padding: 5px 6px;
+}
+
+.vignette_header h1 {
+    font-size: 22px;
+}
+
+.vignette_img img {
+    width: 100%;
+}
+
+.hackimg {
+    padding-bottom: 10px;
+}
+
+
+#loginForm p a {
+           color: #0cf !important;
+
+}
+
+label.col-md-2.control-label {
+    color: #0cf;
+}
+
+.hacktitle {
+    font-weight: bold;
+}
+
+
+
+footer {
+  
+
+}

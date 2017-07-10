@@ -1,0 +1,32 @@
+﻿@model IEnumerable<app_HackSpace.Models.has_participant>
+
+@{
+    ViewBag.Title = "ParticipateHackathons";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Participate Hackathons</h2>
+
+@foreach (var item in Model) {
+    <div>
+        <div>
+            @Html.DisplayFor(modelItem => item.Hackathon.nameHack)
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.Hackathon.Facilitator.C_Profile.lastname)
+            @Html.DisplayFor(modelItem => item.Hackathon.Facilitator.C_Profile.firstname)
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.Hackathon.Location_.nameLoc)
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.Hackathon.Program.nameProg)
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.Hackathon.Theme.nameTheme)
+        </div>
+        <div>
+            @Html.ActionLink("Select", "SelectYourHackathons", new { id = item.idHackathon })
+        </div>
+    </div>
+}

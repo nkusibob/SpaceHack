@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HackSpaceDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cricketer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name_" Type="varchar" MaxLength="50" />
+          <Property Name="FullName" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Team" Type="varchar" MaxLength="50" />
+          <Property Name="OdiRuns" Type="int" />
+          <Property Name="TestRuns" Type="int" />
+          <Property Name="Century" Type="int" />
+          <Property Name="HalfCentury" Type="int" />
+          <Property Name="Wickets" Type="int" />
+          <Property Name="Catches" Type="int" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HackSpaceDBModel1StoreContainer">
+          <EntitySet Name="Cricketer" EntityType="Self.Cricketer" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HackSpaceDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HackSpaceDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cricketers" EntityType="HackSpaceDBModel1.Cricketer" />
+        </EntityContainer>
+        <EntityType Name="Cricketer">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Team" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OdiRuns" Type="Int32" />
+          <Property Name="TestRuns" Type="Int32" />
+          <Property Name="Century" Type="Int32" />
+          <Property Name="HalfCentury" Type="Int32" />
+          <Property Name="Wickets" Type="Int32" />
+          <Property Name="Catches" Type="Int32" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HackSpaceDBModel1StoreContainer" CdmEntityContainer="HackSpaceDBEntities1">
+          <EntitySetMapping Name="Cricketers">
+            <EntityTypeMapping TypeName="HackSpaceDBModel1.Cricketer">
+              <MappingFragment StoreEntitySet="Cricketer">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="Catches" ColumnName="Catches" />
+                <ScalarProperty Name="Wickets" ColumnName="Wickets" />
+                <ScalarProperty Name="HalfCentury" ColumnName="HalfCentury" />
+                <ScalarProperty Name="Century" ColumnName="Century" />
+                <ScalarProperty Name="TestRuns" ColumnName="TestRuns" />
+                <ScalarProperty Name="OdiRuns" ColumnName="OdiRuns" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Name_" ColumnName="Name_" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

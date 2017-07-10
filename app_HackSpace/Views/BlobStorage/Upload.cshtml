@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*-----AZURE STORAGE--------------------------------------------------------------------------------------*@
+<h2>Upload The Image</h2>
+<p>
+    @using (Html.BeginForm("Upload", "BlobStorage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>Upload Image</div>
+        <input type="file" name="avatar" />
+        <input type="submit" value="upload" />
+    }
+</p>
+<table>
+    <tr>
+        <td>
+            <table class="table" style="width:200px; ">
+                <tr>
+                    <td style="width:50%">Image</td>
+                    <td style="width:25%">Edit</td>
+                    <td style="width:25%">Delete</td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="@item" alt="image here is" width="100" height="100" /></td>
+                        <td><input type="button" id="@item" onclick="EditImage('@item');" value="Edit" /></td>
+                        <td><input type="button" id="@item" onclick="deleteImage('@item');" value="Delete" /></td>
+                    </tr>
+                }
+            </table>
+        </td>
+        <td style="width:100px"></td>
+        <td>
+            <div id="ForEdit"></div>
+        </td>
+    </tr>
+</table>
+
+<script>
+    function deleteImage(item) {
+        var url = "/BlobStorage/DeleteImg";
+        $.post(url, { Name: item }, function (data) {
+            window.location.href = "/BlobStorage/Upload";
+        });
+    }
+
+    function EditImage(item) {
+        $("#ForEdit").load("/BlobStorage/Edit?Name=" + item,
+            function () {
+
+            }).css
+            ({
+                "border-color": "red",
+                "border-width": "5px",
+                "border-style": "solid"
+            });
+    }
+</script>

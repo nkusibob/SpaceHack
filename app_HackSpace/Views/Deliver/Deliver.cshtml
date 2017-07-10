@@ -1,0 +1,60 @@
+﻿@model app_HackSpace.Models.ViewModels.ManageModel
+
+@{
+    ViewBag.Title = "Deliver";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>@ViewBag.nameHack</h4>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Manage", "RedirectSelectHack", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Explore", "RedirectExplore", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Pitch", "RedirectPitch", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Match", "RedirectMatch", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Deliver", "Deliver", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Launch", "RedirectLaunch", new { id = ViewBag.hackathonId })</li>
+    </ul>
+</div>
+
+<h4>Deliver</h4>
+
+<div>
+    @*@Html.ActionLink("Suggest tool", "DeliverUpload", new { id = ViewBag.hackathonId, nameHack = ViewBag.nameHack })*@
+    @Html.ActionLink("Suggest tool", "DeliverUpload", new { id = ViewBag.hackathonId, nameHack = ViewBag.nameHack })
+</div>
+
+@*@foreach (var item in Model.deliver)
+    {
+        <div>
+            <div>
+                <div>@Html.DisplayFor(modelItem => item.title)</div>
+                <img src="~/Content/Images/Deliver/@item.logo" width="120" height="100" />
+            </div>
+            <div>
+                @Html.DisplayFor(modelItem => item.descDeliver)
+            </div>
+            <div>
+                @Html.ActionLink("Edit", "DeliverEdit", new { id = item.idDeliver }) |
+                @Html.ActionLink("Delete", "DeliverDelete", new { id = item.idDeliver })
+            </div>
+        </div>
+    }*@
+
+@foreach (var item in Model.deliver)
+{
+    <div>
+        <div>
+            <div>@Html.DisplayFor(modelItem => item.title)</div>
+            <img src="@item.logo" alt="image here is" width="200" height="200" />
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.descDeliver)
+        </div>
+        <div>
+            @Html.ActionLink("Edit", "DeliverEdit", new { id = item.idDeliver, url = item.logo }) |
+            @Html.ActionLink("Delete", "DeliverDelete", new { id = item.idDeliver, url = item.logo })
+        </div>
+    </div>
+}

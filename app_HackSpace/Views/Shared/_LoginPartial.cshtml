@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        /*changed "navbar-right" class to */
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+
+
+            @*-----ADDED>>>>>-------------------------------------------------------------------------------------------------------------*@
+            <li>
+                @{
+                    var imgUrl = Url.Content("~/Content/Images/Profile/" + User.Identity.GetUserName() + ".png") + "?time=" + DateTime.Now.ToString();
+                }
+                <img src="@imgUrl" height="50" width="50" />
+            </li>
+            @*-----<<<<<ADDED-------------------------------------------------------------------------------------------------------------*@
+
+            <li>
+                @Html.ActionLink("Bonjour " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Se déconnecter</a></li>
+        </ul>
+                        }
+                    }
+                    else
+                    {
+  <ul class="nav navbar-nav navbar-right">
+                            <li>@Html.ActionLink("S’inscrire", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                            <li>@Html.ActionLink("Se connecter", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                        </ul>
+                    }

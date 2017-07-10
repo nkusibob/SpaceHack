@@ -1,0 +1,306 @@
+﻿@model app_HackSpace.Models.RegisterViewModel
+@{
+    ViewBag.Title = "S’inscrire";
+}
+
+<link href="~/Content/chosen.css" rel="stylesheet" />
+<script src="~/Scripts/chosen.jquery.js"></script>
+
+<div class="container body-content">
+
+    <h2>@ViewBag.Title.</h2>
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <h4>Créer un nouveau compte.</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @placeholder = "email", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @placeholder = "password", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "confirm password", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        //-----ADDED>>>>>------------------------------------------------------------------------------------------
+        <div class="form-group">
+            @Html.LabelFor(m => m.firstname, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.firstname, new { @placeholder = "first name", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.firstname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.lastname, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.lastname, new { @placeholder = "last name", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.lastname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.phone, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.phone, new { @placeholder = "phone number", @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.id_Type, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.id_Type, ViewBag.TypeList as SelectList, "--select--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.id_Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.picture, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.picture, new { @placeholder = "picture", @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.company, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.company, new { @placeholder = "company", @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.idSkills, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.idSkills, ViewBag.SkillList as SelectList, new { @class = "form-control chosen-select", @multiple = "true", required = "" })
+                @Html.ValidationMessageFor(m => m.idSkills, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.idSize_tshirt, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.idSize_tshirt, ViewBag.SizeList as SelectList, "--select--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.idSize_tshirt, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.idFood_pref, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.idFood_pref, ViewBag.FoodList as SelectList, "--select--", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.idFood_pref, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        //-----PROFILS
+        <p>Experts are talented entrepreneurs, consultants and mentors who will coach the start-ups all along their journey. Are you one of them? </p>
+        <div class="form-group">
+            @Html.Label("Expert", new { @class = "col-md-2 control-label" })
+            <input id="btnAddExp" type="button" class="btn btn-default" value="I'm Expert" onclick="AddExpert();" />
+            <input id="btnRemoveExp" type="button" class="btn btn-default" value="I'm Not Expert" onclick="RemoveExpert();" style="display:none" />
+            <div class="col-md-10" id="divexpert">
+                @*JavaScript AddExpert()*@
+            </div>
+        </div>
+
+        <p>Sponsors are innovative organizations that want to get closer to start-ups and stimulate entrepreneurship. They support the future change-makers. Are you one of them? </p>
+        <div class="form-group">
+            @Html.Label("Sponsor", new { @class = "col-md-2 control-label" })
+            <input id="btnAddSpon" type="button" class="btn btn-default" value="I'm Sponsor" onclick="AddSponsor();" />
+            <input id="btnRemoveSpon" type="button" class="btn btn-default" value="I'm Not Sponsor" onclick="RemoveSponsor();" style="display:none" />
+            <div class="col-md-10" id="divsponsor">
+                @*JavaScript AddSponsor()*@
+            </div>
+        </div>
+
+        <p>Facilitators are inspiring speakers who will lead the plenary sessions and energize the community all along their journey. Are you one of them? </p>
+        <div class="form-group">
+            @Html.Label("Facilitator", new { @class = "col-md-2 control-label" })
+            <input id="btnAddFacil" type="button" class="btn btn-default" value="I'm Facilitator" onclick="AddFacilitator();" />
+            <input id="btnRemoveFacil" type="button" class="btn btn-default" value="I'm Not Facilitator" onclick="RemoveFacilitator();" style="display:none" />
+            <div class="col-md-10" id="divfacilitator">
+                @*JavaScript AddFacilitator()*@
+            </div>
+        </div>
+
+        <p>Super Heroes are certified scrum masters (or familiar with the lean/agile/scrum methodology) who will be assigned to start-ups and support them all along their journey. Are you one of them? </p>
+        <div class="form-group">
+            @Html.Label("Super hero", new { @class = "col-md-2 control-label" })
+            <input id="btnAddSuper" type="button" class="btn btn-default" value="I'm Super Hero" onclick="AddSuperHero();" />
+            <input id="btnRemoveSuper" type="button" class="btn btn-default" value="I'm Not Super Hero" onclick="RemoveSuperHero();" style="display:none" />
+            <div class="col-md-10" id="divsuperhero">
+                @*JavaScript AddSuperHero()*@
+            </div>
+        </div>
+
+        <p>Jury members are experimented managers or former entrepreneurs who knows very well the business and can easily judge the potential of a start-up. Are you one of them? </p>
+        <div class="form-group">
+            @Html.Label("Jury", new { @class = "col-md-2 control-label" })
+            <input id="btnAddJury" type="button" class="btn btn-default" value="I'm Jury" onclick="AddJury();" />
+            <input id="btnRemoveJury" type="button" class="btn btn-default" value="I'm Not Jury" onclick="RemoveJury();" style="display:none" />
+            <div class="col-md-10" id="divjury">
+                @*JavaScript AddJury()*@
+            </div>
+        </div>
+
+        <p>Partners are service providers that already collaborate with start-ups and will contribute to their journey by providing rewards. They support the future change-makers. Are you one of them? </p>
+        <div class="form-group">
+            @Html.Label("Partner", new { @class = "col-md-2 control-label" })
+            <input id="btnAddPart" type="button" class="btn btn-default" value="I'm Partner" onclick="AddPartner();" />
+            <input id="btnRemovePart" type="button" class="btn btn-default" value="I'm Not Partner" onclick="RemovePartner();" style="display:none" />
+            <div class="col-md-10" id="divpartner">
+                @*JavaScript AddPartner()*@
+            </div>
+        </div>
+        //-----<<<<<ADDED------------------------------------------------------------------------------------------
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" class="btn btn-default" value="S’inscrire" />
+            </div>
+        </div>
+    }
+
+    </div>
+    <script>
+    //expert
+    function AddExpert() {
+        var html = '@Html.LabelFor(m => m.expertise, new { @class = "col-md-2 control-label", @id = "idexpert" }) <div>@Html.TextBoxFor(m => m.expertise, new { @placeholder = "expertise", @class = "form-control", @id= "idexpert" })</div>';
+        $('#divexpert').append(html);
+        var html = '@Html.LabelFor(m => m.availabilitiesEx, new { @class = "col-md-2 control-label", @id = "idexpert" }) <div>@Html.TextBoxFor(m => m.availabilitiesEx, new { @placeholder = "availabilities", @class = "form-control", @id = "idexpert" })</div>';
+        $('#divexpert').append(html);
+        var html = '@Html.LabelFor(m => m.bioEx, new { @class = "col-md-2 control-label", @id = "idexpert" }) <div>@Html.TextBoxFor(m => m.bioEx, new { @placeholder = "bio", @class = "form-control", @id = "idexpert" })</div>';
+        $('#divexpert').append(html);
+        var html = '@Html.LabelFor(m => m.hourly_rateEx, new { @class = "col-md-2 control-label", @id = "idexpert" }) <div>@Html.TextBoxFor(m => m.hourly_rateEx, new { @placeholder = "hourly rate", @class = "form-control", @id = "idexpert" })</div>';
+        $('#divexpert').append(html);
+        document.getElementById('btnAddExp').style.display = "none";
+        document.getElementById('btnRemoveExp').style.display = "";
+    };
+        function RemoveExpert() {
+            document.getElementById('btnAddExp').style.display = "";
+            var contentToRemove = document.querySelectorAll("#idexpert");
+            $(contentToRemove).remove()
+            document.getElementById('btnRemoveExp').style.display = "none";
+    };
+    //sponsor
+    function AddSponsor() {
+        var html = '@Html.LabelFor(m => m.logoSp, new { @class = "col-md-2 control-label", @id = "idsponsor" }) <div>@Html.TextBoxFor(m => m.logoSp, new { @placeholder = "logo", @class = "form-control", @id= "idsponsor" })</div>';
+        $('#divsponsor').append(html);
+        var html = '@Html.LabelFor(m => m.max_budgetSp, new { @class = "col-md-2 control-label", @id = "idsponsor" }) <div>@Html.TextBoxFor(m => m.max_budgetSp, new { @placeholder = "maximum budget proposal", @class = "form-control", @id = "idsponsor" })</div>';
+        $('#divsponsor').append(html);
+        var html = '@Html.LabelFor(m => m.prefer_thematicSp, new { @class = "col-md-2 control-label", @id = "idsponsor" }) <div>@Html.TextBoxFor(m => m.prefer_thematicSp, new { @placeholder = "preferred thematic", @class = "form-control", @id = "idsponsor" })</div>';
+        $('#divsponsor').append(html);
+        var html = '@Html.LabelFor(m => m.needsSp, new { @class = "col-md-2 control-label", @id = "idsponsor" }) <div>@Html.TextBoxFor(m => m.needsSp, new { @placeholder = "needs", @class = "form-control", @id = "idsponsor" })</div>';
+        $('#divsponsor').append(html);
+        document.getElementById('btnAddSpon').style.display = "none";
+        document.getElementById('btnRemoveSpon').style.display = "";
+    };
+        function RemoveSponsor() {
+            document.getElementById('btnAddSpon').style.display = "";
+            var contentToRemove = document.querySelectorAll("#idsponsor");
+            $(contentToRemove).remove()
+            document.getElementById('btnRemoveSpon').style.display = "none";
+    };
+    //facilitator
+        function AddFacilitator() {
+        var html = '@Html.LabelFor(m => m.availabilitiesFa, new { @class = "col-md-2 control-label", @id = "idfacilitator" }) <div>@Html.TextBoxFor(m => m.availabilitiesFa, new { @placeholder = "availabilities", @class = "form-control", @id= "idfacilitator" })</div>';
+        $('#divfacilitator').append(html);
+        var html = '@Html.LabelFor(m => m.bioFa, new { @class = "col-md-2 control-label", @id = "idfacilitator" }) <div>@Html.TextBoxFor(m => m.bioFa, new { @placeholder = "bio", @class = "form-control", @id = "idfacilitator" })</div>';
+        $('#divfacilitator').append(html);
+        var html = '@Html.LabelFor(m => m.hourly_rateFa, new { @class = "col-md-2 control-label", @id = "idfacilitator" }) <div>@Html.TextBoxFor(m => m.hourly_rateFa, new { @placeholder = "hourly rate", @class = "form-control", @id = "idfacilitator" })</div>';
+        $('#divfacilitator').append(html);
+        var html = '@Html.LabelFor(m => m.website, new { @class = "col-md-2 control-label", @id = "idfacilitator" }) <div>@Html.TextBoxFor(m => m.website, new { @placeholder = "website", @class = "form-control", @id = "idfacilitator" })</div>';
+        $('#divfacilitator').append(html);
+        var html = '@Html.LabelFor(m => m.urlFcb, new { @class = "col-md-2 control-label", @id = "idfacilitator" }) <div>@Html.TextBoxFor(m => m.urlFcb, new { @placeholder = "facebook", @class = "form-control", @id = "idfacilitator" })</div>';
+        $('#divfacilitator').append(html);
+        var html = '@Html.LabelFor(m => m.urlTwit, new { @class = "col-md-2 control-label", @id = "idfacilitator" }) <div>@Html.TextBoxFor(m => m.urlTwit, new { @placeholder = "twitter", @class = "form-control", @id = "idfacilitator" })</div>';
+        $('#divfacilitator').append(html);
+        var html = '@Html.LabelFor(m => m.urlLin, new { @class = "col-md-2 control-label", @id = "idfacilitator" }) <div>@Html.TextBoxFor(m => m.urlLin, new { @placeholder = "linkedin", @class = "form-control", @id = "idfacilitator" })</div>';
+        $('#divfacilitator').append(html);
+        document.getElementById('btnAddFacil').style.display = "none";
+        document.getElementById('btnRemoveFacil').style.display = "";
+    };
+        function RemoveFacilitator() {
+            document.getElementById('btnAddFacil').style.display = "";
+            var contentToRemove = document.querySelectorAll("#idfacilitator");
+            $(contentToRemove).remove()
+            document.getElementById('btnRemoveFacil').style.display = "none";
+    };
+    //super hero
+        function AddSuperHero() {
+        var html = '@Html.LabelFor(m => m.availabilitiesSu, new { @class = "col-md-2 control-label", @id = "idsuperhero" }) <div>@Html.TextBoxFor(m => m.availabilitiesSu, new { @placeholder = "availabilities", @class = "form-control", @id= "idsuperhero" })</div>';
+        $('#divsuperhero').append(html);
+        var html = '@Html.LabelFor(m => m.bioSu, new { @class = "col-md-2 control-label", @id = "idsuperhero" }) <div>@Html.TextBoxFor(m => m.bioSu, new { @placeholder = "bio", @class = "form-control", @id = "idsuperhero" })</div>';
+        $('#divsuperhero').append(html);
+        var html = '@Html.LabelFor(m => m.hourly_rateSu, new { @class = "col-md-2 control-label", @id = "idsuperhero" }) <div>@Html.TextBoxFor(m => m.hourly_rateSu, new { @placeholder = "hourly rate", @class = "form-control", @id = "idsuperhero" })</div>';
+        $('#divsuperhero').append(html);
+        document.getElementById('btnAddSuper').style.display = "none";
+        document.getElementById('btnRemoveSuper').style.display = "";
+    };
+        function RemoveSuperHero() {
+            document.getElementById('btnAddSuper').style.display = "";
+            var contentToRemove = document.querySelectorAll("#idsuperhero");
+            $(contentToRemove).remove()
+            document.getElementById('btnRemoveSuper').style.display = "none";
+    };
+    //jury
+        function AddJury() {
+        var html = '@Html.LabelFor(m => m.availabilitiesJu, new { @class = "col-md-2 control-label", @id = "idjury" }) <div>@Html.TextBoxFor(m => m.availabilitiesJu, new { @placeholder = "availabilities", @class = "form-control", @id= "idjury" })</div>';
+        $('#divjury').append(html);
+        var html = '@Html.LabelFor(m => m.bioJu, new { @class = "col-md-2 control-label", @id = "idjury" }) <div>@Html.TextBoxFor(m => m.bioJu, new { @placeholder = "bio", @class = "form-control", @id = "idjury" })</div>';
+        $('#divjury').append(html);
+        var html = '@Html.LabelFor(m => m.hourly_rateJu, new { @class = "col-md-2 control-label", @id = "idjury" }) <div>@Html.TextBoxFor(m => m.hourly_rateJu, new { @placeholder = "hourly rate", @class = "form-control", @id = "idjury" })</div>';
+        $('#divjury').append(html);
+        document.getElementById('btnAddJury').style.display = "none";
+        document.getElementById('btnRemoveJury').style.display = "";
+    };
+        function RemoveJury() {
+            document.getElementById('btnAddJury').style.display = "";
+            var contentToRemove = document.querySelectorAll("#idjury");
+            $(contentToRemove).remove()
+            document.getElementById('btnRemoveJury').style.display = "none";
+    };
+    //partner
+        function AddPartner() {
+        var html = '@Html.LabelFor(m => m.logoPa, new { @class = "col-md-2 control-label", @id = "idpartner" }) <div>@Html.TextBoxFor(m => m.logoPa, new { @placeholder = "logo", @class = "form-control", @id= "idpartner" })</div>';
+        $('#divpartner').append(html);
+        var html = '@Html.LabelFor(m => m.reward_proposal, new { @class = "col-md-2 control-label", @id = "idpartner" }) <div>@Html.TextBoxFor(m => m.reward_proposal, new { @placeholder = "reward proposal", @class = "form-control", @id = "idpartner" })</div>';
+        $('#divpartner').append(html);
+        var html = '@Html.LabelFor(m => m.prefer_thematicPa, new { @class = "col-md-2 control-label", @id = "idpartner" }) <div>@Html.TextBoxFor(m => m.prefer_thematicPa, new { @placeholder = "preferred thematic", @class = "form-control", @id = "idpartner" })</div>';
+        $('#divpartner').append(html);
+        var html = '@Html.LabelFor(m => m.needsPa, new { @class = "col-md-2 control-label", @id = "idpartner" }) <div>@Html.TextBoxFor(m => m.needsPa, new { @placeholder = "needs", @class = "form-control", @id = "idpartner" })</div>';
+        $('#divpartner').append(html);
+        document.getElementById('btnAddPart').style.display = "none";
+        document.getElementById('btnRemovePart').style.display = "";
+    };
+        function RemovePartner() {
+            document.getElementById('btnAddPart').style.display = "";
+            var contentToRemove = document.querySelectorAll("#idpartner");
+            $(contentToRemove).remove()
+            document.getElementById('btnRemovePart').style.display = "none";
+    };
+    </script>
+
+    <script>
+        $('.chosen-select').chosen();
+    </script>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

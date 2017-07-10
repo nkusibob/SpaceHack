@@ -1,0 +1,10 @@
+﻿@model System.String
+<p>
+    @using (Html.BeginForm("Edit", "BlobStorage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div>Edit Image :<img src=@Model alt="image here is" width="100" height="100" /></div>
+        <input type="hidden" value=@Model name="ImageName" />
+        <input type="file" name="avatar" />
+        <input type="submit" value="upload" />
+    }
+</p> 

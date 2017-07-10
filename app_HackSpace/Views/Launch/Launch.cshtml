@@ -1,0 +1,59 @@
+﻿@model app_HackSpace.Models.ViewModels.ManageModel
+
+@{
+    ViewBag.Title = "Launch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.nameHack</h2>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Manage", "RedirectSelectHack", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Explore", "RedirectExplore", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Pitch", "RedirectPitch", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Match", "RedirectMatch", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Deliver", "RedirectDeliver", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Launch", "Launch", new { id = ViewBag.hackathonId })</li>
+    </ul>
+</div>
+
+<h4>Launch</h4>
+
+<div class="navbar-collapse collapse">
+    @Html.ActionLink("Add reward", "LaunchUpload", new { id = ViewBag.hackathonId, nameHack = ViewBag.nameHack })
+</div>
+
+@*@foreach (var item in Model.launch)
+{
+    <div>
+        <div>
+            <div>@Html.DisplayFor(modelItem => item.title)</div>
+            <img src="~/Content/Images/Launch/@item.logo" width="120" height="100" />
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.descLaunch)
+        </div>
+        <div>
+            @Html.ActionLink("Edit", "LaunchEdit", new { id = item.idLaunch }) |
+            @Html.ActionLink("Delete", "LaunchDelete", new { id = item.idLaunch })
+        </div>
+    </div>
+}*@
+
+@foreach (var item in Model.launch)
+{
+    <div>
+        <div>
+            <div>@Html.DisplayFor(modelItem => item.title)</div>
+            <img src="@item.logo" alt="image here is" width="200" height="200" />
+        </div>
+        <div>
+            @Html.DisplayFor(modelItem => item.descLaunch)
+        </div>
+        <div>
+            @Html.ActionLink("Edit", "LaunchEdit", new { id = item.idLaunch, url = item.logo }) |
+            @Html.ActionLink("Delete", "LaunchDelete", new { id = item.idLaunch, url = item.logo })
+        </div>
+    </div>
+}

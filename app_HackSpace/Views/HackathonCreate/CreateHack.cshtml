@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Hackathon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+
+    <h1>Welcome...</h1>
+
+    <h2>@Html.ActionLink("Create a Hackathon", "FacilitatorList", "HackathonCreate")</h2>
+
+    @*@if (User.Identity.IsAuthenticated && (User.IsInRole("User") || User.IsInRole("FacebookManager") || User.IsInRole("GoogleManager") || User.IsInRole("MicrosoftManager")))
+        {
+        <h2>@Html.ActionLink("Create a Hackathon", "FacilitatorList", "HackathonCreate")</h2>
+        }*@
+
+</div>

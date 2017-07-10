@@ -1,0 +1,2967 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HackSpaceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="_Partner">
+          <Key>
+            <PropertyRef Name="id_Partner" />
+          </Key>
+          <Property Name="id_Partner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="logo" Type="varchar" MaxLength="50" />
+          <Property Name="reward_proposal" Type="varchar" MaxLength="50" />
+          <Property Name="prefer_thematic" Type="varchar" MaxLength="50" />
+          <Property Name="needs" Type="varchar" MaxLength="50" />
+          <Property Name="id_Profile" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Expert">
+          <Key>
+            <PropertyRef Name="idExpert" />
+          </Key>
+          <Property Name="idExpert" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="expertise" Type="varchar(max)" />
+          <Property Name="availabilities" Type="varchar" MaxLength="50" />
+          <Property Name="bio" Type="varchar(max)" />
+          <Property Name="hourly_rate" Type="varchar" MaxLength="50" />
+          <Property Name="id_Profile" Type="int" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facilitator">
+          <Key>
+            <PropertyRef Name="idFacilitator" />
+          </Key>
+          <Property Name="idFacilitator" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="availabilities" Type="varchar" MaxLength="50" />
+          <Property Name="bio" Type="varchar(max)" />
+          <Property Name="hourly_rate" Type="varchar" MaxLength="50" />
+          <Property Name="website" Type="varchar" MaxLength="50" />
+          <Property Name="urlFcb" Type="varchar" MaxLength="50" />
+          <Property Name="urlTwit" Type="varchar" MaxLength="50" />
+          <Property Name="urlLin" Type="varchar" MaxLength="50" />
+          <Property Name="id_Profile" Type="int" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Goodie">
+          <Key>
+            <PropertyRef Name="idGoodie" />
+          </Key>
+          <Property Name="idGoodie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameGoodie" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descGoodie" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hackathon">
+          <Key>
+            <PropertyRef Name="idHackathon" />
+          </Key>
+          <Property Name="idHackathon" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameHack" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="image_" Type="varchar" MaxLength="50" />
+          <Property Name="idTheme" Type="int" Nullable="false" />
+          <Property Name="idProg" Type="int" Nullable="false" />
+          <Property Name="idLoc" Type="int" Nullable="false" />
+          <Property Name="idFacilitator" Type="int" Nullable="false" />
+          <Property Name="idPayment" Type="int" />
+        </EntityType>
+        <EntityType Name="has_expert">
+          <Key>
+            <PropertyRef Name="idhas_expert" />
+          </Key>
+          <Property Name="idhas_expert" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idHackathon" Type="int" Nullable="false" />
+          <Property Name="idExpert" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="has_goodie">
+          <Key>
+            <PropertyRef Name="idhas_goodie" />
+          </Key>
+          <Property Name="idhas_goodie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idHackathon" Type="int" Nullable="false" />
+          <Property Name="idGoodie" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="has_participant">
+          <Key>
+            <PropertyRef Name="idhas_participant" />
+          </Key>
+          <Property Name="idhas_participant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idParticipant" Type="int" Nullable="false" />
+          <Property Name="idHackathon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="has_reward">
+          <Key>
+            <PropertyRef Name="idhas_reward" />
+          </Key>
+          <Property Name="idhas_reward" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idHackathon" Type="int" Nullable="false" />
+          <Property Name="idReward" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="has_sponsor">
+          <Key>
+            <PropertyRef Name="idhas_sponsor" />
+          </Key>
+          <Property Name="idhas_sponsor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idHackathon" Type="int" Nullable="false" />
+          <Property Name="idSponsor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Jury">
+          <Key>
+            <PropertyRef Name="idJury" />
+          </Key>
+          <Property Name="idJury" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="availabilities" Type="varchar" MaxLength="50" />
+          <Property Name="bio" Type="varchar(max)" />
+          <Property Name="hourly_rate" Type="varchar" MaxLength="50" />
+          <Property Name="id_Profile" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Location_">
+          <Key>
+            <PropertyRef Name="idLoc" />
+          </Key>
+          <Property Name="idLoc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameLoc" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descLoc" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="idParticipant" />
+          </Key>
+          <Property Name="idParticipant" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="idPayment" />
+          </Key>
+          <Property Name="idPayment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namePayment" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descPayment" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="idProg" />
+          </Key>
+          <Property Name="idProg" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameProg" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descProg" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reward">
+          <Key>
+            <PropertyRef Name="idReward" />
+          </Key>
+          <Property Name="idReward" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameReward" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descReward" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="idSponsor" />
+          </Key>
+          <Property Name="idSponsor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="logo" Type="varchar" MaxLength="50" />
+          <Property Name="max_budget" Type="varchar" MaxLength="50" />
+          <Property Name="prefer_thematic" Type="varchar" MaxLength="50" />
+          <Property Name="needs" Type="varchar(max)" />
+          <Property Name="id_Profile" Type="int" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Super_hero">
+          <Key>
+            <PropertyRef Name="idSuper_hero" />
+          </Key>
+          <Property Name="idSuper_hero" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="availabilities" Type="varchar" MaxLength="50" />
+          <Property Name="bio" Type="varchar(max)" />
+          <Property Name="hourly_rate" Type="varchar" MaxLength="50" />
+          <Property Name="id_Profile" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="idTheme" />
+          </Key>
+          <Property Name="idTheme" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nameTheme" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descTheme" Type="varchar(max)" Nullable="false" />
+          <Property Name="IsSelected" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_Profile">
+          <Key>
+            <PropertyRef Name="id_Profile" />
+          </Key>
+          <Property Name="id_Profile" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="firstname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="id_AspNetUsers" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="picture" Type="varchar" MaxLength="50" />
+          <Property Name="company" Type="varchar" MaxLength="50" />
+          <Property Name="id_Type" Type="int" Nullable="false" />
+          <Property Name="idSize_tshirt" Type="int" Nullable="false" />
+          <Property Name="idFood_pref" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="_Type">
+          <Key>
+            <PropertyRef Name="id_Type" />
+          </Key>
+          <Property Name="id_Type" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Food_pref">
+          <Key>
+            <PropertyRef Name="idFood_pref" />
+          </Key>
+          <Property Name="idFood_pref" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_food" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="has_skills">
+          <Key>
+            <PropertyRef Name="idhas_skills" />
+          </Key>
+          <Property Name="idhas_skills" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_Profile" Type="int" Nullable="false" />
+          <Property Name="name_skills" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Size_tshirt">
+          <Key>
+            <PropertyRef Name="idSize_tshirt" />
+          </Key>
+          <Property Name="idSize_tshirt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name_size" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Skills">
+          <Key>
+            <PropertyRef Name="name_skills" />
+          </Key>
+          <Property Name="name_skills" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deliver">
+          <Key>
+            <PropertyRef Name="idDeliver" />
+          </Key>
+          <Property Name="idDeliver" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descDeliver" Type="varchar(max)" Nullable="false" />
+          <Property Name="logo" Type="varchar(max)" Nullable="false" />
+          <Property Name="idHackathon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Explore">
+          <Key>
+            <PropertyRef Name="idExplore" />
+          </Key>
+          <Property Name="idExplore" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descExplore" Type="varchar(max)" Nullable="false" />
+          <Property Name="video" Type="varchar(max)" Nullable="false" />
+          <Property Name="idHackathon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Launch">
+          <Key>
+            <PropertyRef Name="idLaunch" />
+          </Key>
+          <Property Name="idLaunch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descLaunch" Type="varchar(max)" Nullable="false" />
+          <Property Name="logo" Type="varchar(max)" Nullable="false" />
+          <Property Name="idHackathon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pitch">
+          <Key>
+            <PropertyRef Name="idPitch" />
+          </Key>
+          <Property Name="idPitch" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="video" Type="varchar(max)" Nullable="false" />
+          <Property Name="idHackathon" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <Association Name="FK___Partner__id_Pro__04E4BC85">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="_Partner" Type="Self._Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="_Partner">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Partner__id_Pro__17036CC0">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="_Partner" Type="Self._Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="_Partner">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__id_Asp__0E6E26BF">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="_Profile">
+              <PropertyRef Name="id_AspNetUsers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__id_Asp__7C4F7684">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="_Profile">
+              <PropertyRef Name="id_AspNetUsers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__id_Typ__0F624AF8">
+          <End Role="_Type" Type="Self._Type" Multiplicity="1" />
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Type">
+              <PropertyRef Name="id_Type" />
+            </Principal>
+            <Dependent Role="_Profile">
+              <PropertyRef Name="id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__id_Typ__7D439ABD">
+          <End Role="_Type" Type="Self._Type" Multiplicity="1" />
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Type">
+              <PropertyRef Name="id_Type" />
+            </Principal>
+            <Dependent Role="_Profile">
+              <PropertyRef Name="id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__idFood__114A936A">
+          <End Role="Food_pref" Type="Self.Food_pref" Multiplicity="1" />
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food_pref">
+              <PropertyRef Name="idFood_pref" />
+            </Principal>
+            <Dependent Role="_Profile">
+              <PropertyRef Name="idFood_pref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__idFood__7F2BE32F">
+          <End Role="Food_pref" Type="Self.Food_pref" Multiplicity="1" />
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food_pref">
+              <PropertyRef Name="idFood_pref" />
+            </Principal>
+            <Dependent Role="_Profile">
+              <PropertyRef Name="idFood_pref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__idSize__10566F31">
+          <End Role="Size_tshirt" Type="Self.Size_tshirt" Multiplicity="1" />
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size_tshirt">
+              <PropertyRef Name="idSize_tshirt" />
+            </Principal>
+            <Dependent Role="_Profile">
+              <PropertyRef Name="idSize_tshirt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__idSize__7E37BEF6">
+          <End Role="Size_tshirt" Type="Self.Size_tshirt" Multiplicity="1" />
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size_tshirt">
+              <PropertyRef Name="idSize_tshirt" />
+            </Principal>
+            <Dependent Role="_Profile">
+              <PropertyRef Name="idSize_tshirt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliver__idHacka__0C85DE4D">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Deliver">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliver__idHacka__1EA48E88">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="Deliver" Type="Self.Deliver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Deliver">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Expert__id_Profi__00200768">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Expert" Type="Self.Expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Expert">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Expert__id_Profi__123EB7A3">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Expert" Type="Self.Expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Expert">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Explore__idHacka__0A9D95DB">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="Explore" Type="Self.Explore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Explore">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Explore__idHacka__1CBC4616">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="Explore" Type="Self.Explore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Explore">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facilitat__id_Pr__02084FDA">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Facilitator" Type="Self.Facilitator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Facilitator">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facilitat__id_Pr__14270015">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Facilitator" Type="Self.Facilitator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Facilitator">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idFac__09A971A2">
+          <End Role="Facilitator" Type="Self.Facilitator" Multiplicity="1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facilitator">
+              <PropertyRef Name="idFacilitator" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idFacilitator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idFac__1BC821DD">
+          <End Role="Facilitator" Type="Self.Facilitator" Multiplicity="1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facilitator">
+              <PropertyRef Name="idFacilitator" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idFacilitator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idLoc__07C12930">
+          <End Role="Location_" Type="Self.Location_" Multiplicity="1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location_">
+              <PropertyRef Name="idLoc" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idLoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idLoc__19DFD96B">
+          <End Role="Location_" Type="Self.Location_" Multiplicity="1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location_">
+              <PropertyRef Name="idLoc" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idLoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idPay__08B54D69">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="idPayment" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idPay__1AD3FDA4">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="idPayment" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idPro__06CD04F7">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="idProg" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idProg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idPro__18EBB532">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="idProg" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idProg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idThe__05D8E0BE">
+          <End Role="Theme" Type="Self.Theme" Multiplicity="1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="idTheme" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idTheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idThe__17F790F9">
+          <End Role="Theme" Type="Self.Theme" Multiplicity="1" />
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="idTheme" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idTheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_exper__idExp__236943A5">
+          <End Role="Expert" Type="Self.Expert" Multiplicity="1" />
+          <End Role="has_expert" Type="Self.has_expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expert">
+              <PropertyRef Name="idExpert" />
+            </Principal>
+            <Dependent Role="has_expert">
+              <PropertyRef Name="idExpert" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_exper__idHac__22751F6C">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="has_expert" Type="Self.has_expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_expert">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_goodi__idGoo__29221CFB">
+          <End Role="Goodie" Type="Self.Goodie" Multiplicity="1" />
+          <End Role="has_goodie" Type="Self.has_goodie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goodie">
+              <PropertyRef Name="idGoodie" />
+            </Principal>
+            <Dependent Role="has_goodie">
+              <PropertyRef Name="idGoodie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_goodi__idHac__282DF8C2">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="has_goodie" Type="Self.has_goodie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_goodie">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_parti__idHac__2B0A656D">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="has_participant" Type="Self.has_participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_participant">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_parti__idPar__2A164134">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="has_participant" Type="Self.has_participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="idParticipant" />
+            </Principal>
+            <Dependent Role="has_participant">
+              <PropertyRef Name="idParticipant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_rewar__idHac__2645B050">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="has_reward" Type="Self.has_reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_reward">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_rewar__idRew__2739D489">
+          <End Role="Reward" Type="Self.Reward" Multiplicity="1" />
+          <End Role="has_reward" Type="Self.has_reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reward">
+              <PropertyRef Name="idReward" />
+            </Principal>
+            <Dependent Role="has_reward">
+              <PropertyRef Name="idReward" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_skill__id_Pr__208CD6FA">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="has_skills" Type="Self.has_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="has_skills">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_skill__name___2180FB33">
+          <End Role="Skills" Type="Self.Skills" Multiplicity="1" />
+          <End Role="has_skills" Type="Self.has_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skills">
+              <PropertyRef Name="name_skills" />
+            </Principal>
+            <Dependent Role="has_skills">
+              <PropertyRef Name="name_skills" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_spons__idHac__245D67DE">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="has_sponsor" Type="Self.has_sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_sponsor">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_spons__idSpo__25518C17">
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="1" />
+          <End Role="has_sponsor" Type="Self.has_sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="idSponsor" />
+            </Principal>
+            <Dependent Role="has_sponsor">
+              <PropertyRef Name="idSponsor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jury__id_Profile__03F0984C">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Jury" Type="Self.Jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Jury">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jury__id_Profile__160F4887">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Jury" Type="Self.Jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Jury">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Launch__idHackat__0D7A0286">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="Launch" Type="Self.Launch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Launch">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Launch__idHackat__1F98B2C1">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="Launch" Type="Self.Launch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Launch">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pitch__idHackath__0B91BA14">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="Pitch" Type="Self.Pitch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Pitch">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pitch__idHackath__1DB06A4F">
+          <End Role="Hackathon" Type="Self.Hackathon" Multiplicity="1" />
+          <End Role="Pitch" Type="Self.Pitch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Pitch">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sponsor__id_Prof__01142BA1">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Sponsor">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sponsor__id_Prof__1332DBDC">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Sponsor">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Super_her__id_Pr__02FC7413">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Super_hero" Type="Self.Super_hero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Super_hero">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Super_her__id_Pr__151B244E">
+          <End Role="_Profile" Type="Self._Profile" Multiplicity="1" />
+          <End Role="Super_hero" Type="Self.Super_hero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Super_hero">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_AspNetUserClaims_user_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_AspNetUserLogins_user_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_AspNetUserRoles_user_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_AspNetUserRoles_user_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HackSpaceDBModelStoreContainer">
+          <EntitySet Name="_Partner" EntityType="Self._Partner" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Expert" EntityType="Self.Expert" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Facilitator" EntityType="Self.Facilitator" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Goodie" EntityType="Self.Goodie" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Hackathon" EntityType="Self.Hackathon" Schema="create" store:Type="Tables" />
+          <EntitySet Name="has_expert" EntityType="Self.has_expert" Schema="create" store:Type="Tables" />
+          <EntitySet Name="has_goodie" EntityType="Self.has_goodie" Schema="create" store:Type="Tables" />
+          <EntitySet Name="has_participant" EntityType="Self.has_participant" Schema="create" store:Type="Tables" />
+          <EntitySet Name="has_reward" EntityType="Self.has_reward" Schema="create" store:Type="Tables" />
+          <EntitySet Name="has_sponsor" EntityType="Self.has_sponsor" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Jury" EntityType="Self.Jury" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Location_" EntityType="Self.Location_" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Participant" EntityType="Self.Participant" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Program" EntityType="Self.Program" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Reward" EntityType="Self.Reward" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Super_hero" EntityType="Self.Super_hero" Schema="create" store:Type="Tables" />
+          <EntitySet Name="Theme" EntityType="Self.Theme" Schema="create" store:Type="Tables" />
+          <EntitySet Name="_Profile" EntityType="Self._Profile" Schema="login" store:Type="Tables" />
+          <EntitySet Name="_Type" EntityType="Self._Type" Schema="login" store:Type="Tables" />
+          <EntitySet Name="Food_pref" EntityType="Self.Food_pref" Schema="login" store:Type="Tables" />
+          <EntitySet Name="has_skills" EntityType="Self.has_skills" Schema="login" store:Type="Tables" />
+          <EntitySet Name="Size_tshirt" EntityType="Self.Size_tshirt" Schema="login" store:Type="Tables" />
+          <EntitySet Name="Skills" EntityType="Self.Skills" Schema="login" store:Type="Tables" />
+          <EntitySet Name="Deliver" EntityType="Self.Deliver" Schema="manage" store:Type="Tables" />
+          <EntitySet Name="Explore" EntityType="Self.Explore" Schema="manage" store:Type="Tables" />
+          <EntitySet Name="Launch" EntityType="Self.Launch" Schema="manage" store:Type="Tables" />
+          <EntitySet Name="Pitch" EntityType="Self.Pitch" Schema="manage" store:Type="Tables" />
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="user" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="user" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="user" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="user" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="user" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="user" store:Type="Tables" />
+          <AssociationSet Name="FK___Partner__id_Pro__04E4BC85" Association="Self.FK___Partner__id_Pro__04E4BC85">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="_Partner" EntitySet="_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Partner__id_Pro__17036CC0" Association="Self.FK___Partner__id_Pro__17036CC0">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="_Partner" EntitySet="_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__id_Asp__0E6E26BF" Association="Self.FK___Profile__id_Asp__0E6E26BF">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="_Profile" EntitySet="_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__id_Asp__7C4F7684" Association="Self.FK___Profile__id_Asp__7C4F7684">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="_Profile" EntitySet="_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__id_Typ__0F624AF8" Association="Self.FK___Profile__id_Typ__0F624AF8">
+            <End Role="_Type" EntitySet="_Type" />
+            <End Role="_Profile" EntitySet="_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__id_Typ__7D439ABD" Association="Self.FK___Profile__id_Typ__7D439ABD">
+            <End Role="_Type" EntitySet="_Type" />
+            <End Role="_Profile" EntitySet="_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__idFood__114A936A" Association="Self.FK___Profile__idFood__114A936A">
+            <End Role="Food_pref" EntitySet="Food_pref" />
+            <End Role="_Profile" EntitySet="_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__idFood__7F2BE32F" Association="Self.FK___Profile__idFood__7F2BE32F">
+            <End Role="Food_pref" EntitySet="Food_pref" />
+            <End Role="_Profile" EntitySet="_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__idSize__10566F31" Association="Self.FK___Profile__idSize__10566F31">
+            <End Role="Size_tshirt" EntitySet="Size_tshirt" />
+            <End Role="_Profile" EntitySet="_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__idSize__7E37BEF6" Association="Self.FK___Profile__idSize__7E37BEF6">
+            <End Role="Size_tshirt" EntitySet="Size_tshirt" />
+            <End Role="_Profile" EntitySet="_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliver__idHacka__0C85DE4D" Association="Self.FK__Deliver__idHacka__0C85DE4D">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="Deliver" EntitySet="Deliver" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliver__idHacka__1EA48E88" Association="Self.FK__Deliver__idHacka__1EA48E88">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="Deliver" EntitySet="Deliver" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Expert__id_Profi__00200768" Association="Self.FK__Expert__id_Profi__00200768">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Expert" EntitySet="Expert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Expert__id_Profi__123EB7A3" Association="Self.FK__Expert__id_Profi__123EB7A3">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Expert" EntitySet="Expert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Explore__idHacka__0A9D95DB" Association="Self.FK__Explore__idHacka__0A9D95DB">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="Explore" EntitySet="Explore" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Explore__idHacka__1CBC4616" Association="Self.FK__Explore__idHacka__1CBC4616">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="Explore" EntitySet="Explore" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facilitat__id_Pr__02084FDA" Association="Self.FK__Facilitat__id_Pr__02084FDA">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Facilitator" EntitySet="Facilitator" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facilitat__id_Pr__14270015" Association="Self.FK__Facilitat__id_Pr__14270015">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Facilitator" EntitySet="Facilitator" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idFac__09A971A2" Association="Self.FK__Hackathon__idFac__09A971A2">
+            <End Role="Facilitator" EntitySet="Facilitator" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idFac__1BC821DD" Association="Self.FK__Hackathon__idFac__1BC821DD">
+            <End Role="Facilitator" EntitySet="Facilitator" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idLoc__07C12930" Association="Self.FK__Hackathon__idLoc__07C12930">
+            <End Role="Location_" EntitySet="Location_" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idLoc__19DFD96B" Association="Self.FK__Hackathon__idLoc__19DFD96B">
+            <End Role="Location_" EntitySet="Location_" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idPay__08B54D69" Association="Self.FK__Hackathon__idPay__08B54D69">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idPay__1AD3FDA4" Association="Self.FK__Hackathon__idPay__1AD3FDA4">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idPro__06CD04F7" Association="Self.FK__Hackathon__idPro__06CD04F7">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idPro__18EBB532" Association="Self.FK__Hackathon__idPro__18EBB532">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idThe__05D8E0BE" Association="Self.FK__Hackathon__idThe__05D8E0BE">
+            <End Role="Theme" EntitySet="Theme" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idThe__17F790F9" Association="Self.FK__Hackathon__idThe__17F790F9">
+            <End Role="Theme" EntitySet="Theme" />
+            <End Role="Hackathon" EntitySet="Hackathon" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_exper__idExp__236943A5" Association="Self.FK__has_exper__idExp__236943A5">
+            <End Role="Expert" EntitySet="Expert" />
+            <End Role="has_expert" EntitySet="has_expert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_exper__idHac__22751F6C" Association="Self.FK__has_exper__idHac__22751F6C">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="has_expert" EntitySet="has_expert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_goodi__idGoo__29221CFB" Association="Self.FK__has_goodi__idGoo__29221CFB">
+            <End Role="Goodie" EntitySet="Goodie" />
+            <End Role="has_goodie" EntitySet="has_goodie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_goodi__idHac__282DF8C2" Association="Self.FK__has_goodi__idHac__282DF8C2">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="has_goodie" EntitySet="has_goodie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_parti__idHac__2B0A656D" Association="Self.FK__has_parti__idHac__2B0A656D">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="has_participant" EntitySet="has_participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_parti__idPar__2A164134" Association="Self.FK__has_parti__idPar__2A164134">
+            <End Role="Participant" EntitySet="Participant" />
+            <End Role="has_participant" EntitySet="has_participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_rewar__idHac__2645B050" Association="Self.FK__has_rewar__idHac__2645B050">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="has_reward" EntitySet="has_reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_rewar__idRew__2739D489" Association="Self.FK__has_rewar__idRew__2739D489">
+            <End Role="Reward" EntitySet="Reward" />
+            <End Role="has_reward" EntitySet="has_reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_skill__id_Pr__208CD6FA" Association="Self.FK__has_skill__id_Pr__208CD6FA">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="has_skills" EntitySet="has_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_skill__name___2180FB33" Association="Self.FK__has_skill__name___2180FB33">
+            <End Role="Skills" EntitySet="Skills" />
+            <End Role="has_skills" EntitySet="has_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_spons__idHac__245D67DE" Association="Self.FK__has_spons__idHac__245D67DE">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="has_sponsor" EntitySet="has_sponsor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_spons__idSpo__25518C17" Association="Self.FK__has_spons__idSpo__25518C17">
+            <End Role="Sponsor" EntitySet="Sponsor" />
+            <End Role="has_sponsor" EntitySet="has_sponsor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jury__id_Profile__03F0984C" Association="Self.FK__Jury__id_Profile__03F0984C">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Jury" EntitySet="Jury" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jury__id_Profile__160F4887" Association="Self.FK__Jury__id_Profile__160F4887">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Jury" EntitySet="Jury" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Launch__idHackat__0D7A0286" Association="Self.FK__Launch__idHackat__0D7A0286">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="Launch" EntitySet="Launch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Launch__idHackat__1F98B2C1" Association="Self.FK__Launch__idHackat__1F98B2C1">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="Launch" EntitySet="Launch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pitch__idHackath__0B91BA14" Association="Self.FK__Pitch__idHackath__0B91BA14">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="Pitch" EntitySet="Pitch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pitch__idHackath__1DB06A4F" Association="Self.FK__Pitch__idHackath__1DB06A4F">
+            <End Role="Hackathon" EntitySet="Hackathon" />
+            <End Role="Pitch" EntitySet="Pitch" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sponsor__id_Prof__01142BA1" Association="Self.FK__Sponsor__id_Prof__01142BA1">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Sponsor" EntitySet="Sponsor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sponsor__id_Prof__1332DBDC" Association="Self.FK__Sponsor__id_Prof__1332DBDC">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Sponsor" EntitySet="Sponsor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Super_her__id_Pr__02FC7413" Association="Self.FK__Super_her__id_Pr__02FC7413">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Super_hero" EntitySet="Super_hero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Super_her__id_Pr__151B244E" Association="Self.FK__Super_her__id_Pr__151B244E">
+            <End Role="_Profile" EntitySet="_Profile" />
+            <End Role="Super_hero" EntitySet="Super_hero" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_AspNetUserClaims_user_AspNetUsers_UserId" Association="Self.FK_user_AspNetUserClaims_user_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_AspNetUserLogins_user_AspNetUsers_UserId" Association="Self.FK_user_AspNetUserLogins_user_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_AspNetUserRoles_user_AspNetRoles_RoleId" Association="Self.FK_user_AspNetUserRoles_user_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_AspNetUserRoles_user_AspNetUsers_UserId" Association="Self.FK_user_AspNetUserRoles_user_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HackSpaceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HackSpaceDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C_Partner" EntityType="HackSpaceDBModel.C_Partner" />
+          <EntitySet Name="Experts" EntityType="HackSpaceDBModel.Expert" />
+          <EntitySet Name="Facilitators" EntityType="HackSpaceDBModel.Facilitator" />
+          <EntitySet Name="Goodies" EntityType="HackSpaceDBModel.Goodie" />
+          <EntitySet Name="Hackathons" EntityType="HackSpaceDBModel.Hackathon" />
+          <EntitySet Name="has_expert" EntityType="HackSpaceDBModel.has_expert" />
+          <EntitySet Name="has_goodie" EntityType="HackSpaceDBModel.has_goodie" />
+          <EntitySet Name="has_participant" EntityType="HackSpaceDBModel.has_participant" />
+          <EntitySet Name="has_reward" EntityType="HackSpaceDBModel.has_reward" />
+          <EntitySet Name="has_sponsor" EntityType="HackSpaceDBModel.has_sponsor" />
+          <EntitySet Name="Juries" EntityType="HackSpaceDBModel.Jury" />
+          <EntitySet Name="Location_" EntityType="HackSpaceDBModel.Location_" />
+          <EntitySet Name="Participants" EntityType="HackSpaceDBModel.Participant" />
+          <EntitySet Name="Payments" EntityType="HackSpaceDBModel.Payment" />
+          <EntitySet Name="Programs" EntityType="HackSpaceDBModel.Program" />
+          <EntitySet Name="Rewards" EntityType="HackSpaceDBModel.Reward" />
+          <EntitySet Name="Sponsors" EntityType="HackSpaceDBModel.Sponsor" />
+          <EntitySet Name="Super_hero" EntityType="HackSpaceDBModel.Super_hero" />
+          <EntitySet Name="Themes" EntityType="HackSpaceDBModel.Theme" />
+          <EntitySet Name="C_Profile" EntityType="HackSpaceDBModel.C_Profile" />
+          <EntitySet Name="C_Type" EntityType="HackSpaceDBModel.C_Type" />
+          <EntitySet Name="Food_pref" EntityType="HackSpaceDBModel.Food_pref" />
+          <EntitySet Name="has_skills" EntityType="HackSpaceDBModel.has_skills" />
+          <EntitySet Name="Size_tshirt" EntityType="HackSpaceDBModel.Size_tshirt" />
+          <EntitySet Name="Skills" EntityType="HackSpaceDBModel.Skill" />
+          <EntitySet Name="Delivers" EntityType="HackSpaceDBModel.Deliver" />
+          <EntitySet Name="Explores" EntityType="HackSpaceDBModel.Explore" />
+          <EntitySet Name="Launches" EntityType="HackSpaceDBModel.Launch" />
+          <EntitySet Name="Pitches" EntityType="HackSpaceDBModel.Pitch" />
+          <EntitySet Name="C__MigrationHistory" EntityType="HackSpaceDBModel.C__MigrationHistory" />
+          <EntitySet Name="AspNetRoles" EntityType="HackSpaceDBModel.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="HackSpaceDBModel.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="HackSpaceDBModel.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="HackSpaceDBModel.AspNetUser" />
+          <AssociationSet Name="FK___Partner__id_Pro__04E4BC85" Association="HackSpaceDBModel.FK___Partner__id_Pro__04E4BC85">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="C_Partner" EntitySet="C_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Partner__id_Pro__17036CC0" Association="HackSpaceDBModel.FK___Partner__id_Pro__17036CC0">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="C_Partner" EntitySet="C_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Expert__id_Profi__00200768" Association="HackSpaceDBModel.FK__Expert__id_Profi__00200768">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Expert" EntitySet="Experts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Expert__id_Profi__123EB7A3" Association="HackSpaceDBModel.FK__Expert__id_Profi__123EB7A3">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Expert" EntitySet="Experts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_exper__idExp__236943A5" Association="HackSpaceDBModel.FK__has_exper__idExp__236943A5">
+            <End Role="Expert" EntitySet="Experts" />
+            <End Role="has_expert" EntitySet="has_expert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facilitat__id_Pr__02084FDA" Association="HackSpaceDBModel.FK__Facilitat__id_Pr__02084FDA">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Facilitator" EntitySet="Facilitators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Facilitat__id_Pr__14270015" Association="HackSpaceDBModel.FK__Facilitat__id_Pr__14270015">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Facilitator" EntitySet="Facilitators" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idFac__09A971A2" Association="HackSpaceDBModel.FK__Hackathon__idFac__09A971A2">
+            <End Role="Facilitator" EntitySet="Facilitators" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idFac__1BC821DD" Association="HackSpaceDBModel.FK__Hackathon__idFac__1BC821DD">
+            <End Role="Facilitator" EntitySet="Facilitators" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_goodi__idGoo__29221CFB" Association="HackSpaceDBModel.FK__has_goodi__idGoo__29221CFB">
+            <End Role="Goodie" EntitySet="Goodies" />
+            <End Role="has_goodie" EntitySet="has_goodie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliver__idHacka__0C85DE4D" Association="HackSpaceDBModel.FK__Deliver__idHacka__0C85DE4D">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="Deliver" EntitySet="Delivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Deliver__idHacka__1EA48E88" Association="HackSpaceDBModel.FK__Deliver__idHacka__1EA48E88">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="Deliver" EntitySet="Delivers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Explore__idHacka__0A9D95DB" Association="HackSpaceDBModel.FK__Explore__idHacka__0A9D95DB">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="Explore" EntitySet="Explores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Explore__idHacka__1CBC4616" Association="HackSpaceDBModel.FK__Explore__idHacka__1CBC4616">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="Explore" EntitySet="Explores" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idLoc__07C12930" Association="HackSpaceDBModel.FK__Hackathon__idLoc__07C12930">
+            <End Role="Location_" EntitySet="Location_" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idLoc__19DFD96B" Association="HackSpaceDBModel.FK__Hackathon__idLoc__19DFD96B">
+            <End Role="Location_" EntitySet="Location_" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idPay__08B54D69" Association="HackSpaceDBModel.FK__Hackathon__idPay__08B54D69">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idPay__1AD3FDA4" Association="HackSpaceDBModel.FK__Hackathon__idPay__1AD3FDA4">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idPro__06CD04F7" Association="HackSpaceDBModel.FK__Hackathon__idPro__06CD04F7">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idPro__18EBB532" Association="HackSpaceDBModel.FK__Hackathon__idPro__18EBB532">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idThe__05D8E0BE" Association="HackSpaceDBModel.FK__Hackathon__idThe__05D8E0BE">
+            <End Role="Theme" EntitySet="Themes" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Hackathon__idThe__17F790F9" Association="HackSpaceDBModel.FK__Hackathon__idThe__17F790F9">
+            <End Role="Theme" EntitySet="Themes" />
+            <End Role="Hackathon" EntitySet="Hackathons" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_exper__idHac__22751F6C" Association="HackSpaceDBModel.FK__has_exper__idHac__22751F6C">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="has_expert" EntitySet="has_expert" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_goodi__idHac__282DF8C2" Association="HackSpaceDBModel.FK__has_goodi__idHac__282DF8C2">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="has_goodie" EntitySet="has_goodie" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_parti__idHac__2B0A656D" Association="HackSpaceDBModel.FK__has_parti__idHac__2B0A656D">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="has_participant" EntitySet="has_participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_rewar__idHac__2645B050" Association="HackSpaceDBModel.FK__has_rewar__idHac__2645B050">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="has_reward" EntitySet="has_reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_spons__idHac__245D67DE" Association="HackSpaceDBModel.FK__has_spons__idHac__245D67DE">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="has_sponsor" EntitySet="has_sponsor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Launch__idHackat__0D7A0286" Association="HackSpaceDBModel.FK__Launch__idHackat__0D7A0286">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="Launch" EntitySet="Launches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Launch__idHackat__1F98B2C1" Association="HackSpaceDBModel.FK__Launch__idHackat__1F98B2C1">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="Launch" EntitySet="Launches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pitch__idHackath__0B91BA14" Association="HackSpaceDBModel.FK__Pitch__idHackath__0B91BA14">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="Pitch" EntitySet="Pitches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Pitch__idHackath__1DB06A4F" Association="HackSpaceDBModel.FK__Pitch__idHackath__1DB06A4F">
+            <End Role="Hackathon" EntitySet="Hackathons" />
+            <End Role="Pitch" EntitySet="Pitches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_parti__idPar__2A164134" Association="HackSpaceDBModel.FK__has_parti__idPar__2A164134">
+            <End Role="Participant" EntitySet="Participants" />
+            <End Role="has_participant" EntitySet="has_participant" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_rewar__idRew__2739D489" Association="HackSpaceDBModel.FK__has_rewar__idRew__2739D489">
+            <End Role="Reward" EntitySet="Rewards" />
+            <End Role="has_reward" EntitySet="has_reward" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_spons__idSpo__25518C17" Association="HackSpaceDBModel.FK__has_spons__idSpo__25518C17">
+            <End Role="Sponsor" EntitySet="Sponsors" />
+            <End Role="has_sponsor" EntitySet="has_sponsor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jury__id_Profile__03F0984C" Association="HackSpaceDBModel.FK__Jury__id_Profile__03F0984C">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Jury" EntitySet="Juries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Jury__id_Profile__160F4887" Association="HackSpaceDBModel.FK__Jury__id_Profile__160F4887">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Jury" EntitySet="Juries" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sponsor__id_Prof__01142BA1" Association="HackSpaceDBModel.FK__Sponsor__id_Prof__01142BA1">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Sponsor" EntitySet="Sponsors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sponsor__id_Prof__1332DBDC" Association="HackSpaceDBModel.FK__Sponsor__id_Prof__1332DBDC">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Sponsor" EntitySet="Sponsors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Super_her__id_Pr__02FC7413" Association="HackSpaceDBModel.FK__Super_her__id_Pr__02FC7413">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Super_hero" EntitySet="Super_hero" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Super_her__id_Pr__151B244E" Association="HackSpaceDBModel.FK__Super_her__id_Pr__151B244E">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="Super_hero" EntitySet="Super_hero" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__id_Asp__0E6E26BF" Association="HackSpaceDBModel.FK___Profile__id_Asp__0E6E26BF">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="C_Profile" EntitySet="C_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__id_Asp__7C4F7684" Association="HackSpaceDBModel.FK___Profile__id_Asp__7C4F7684">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="C_Profile" EntitySet="C_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__id_Typ__0F624AF8" Association="HackSpaceDBModel.FK___Profile__id_Typ__0F624AF8">
+            <End Role="C_Type" EntitySet="C_Type" />
+            <End Role="C_Profile" EntitySet="C_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__id_Typ__7D439ABD" Association="HackSpaceDBModel.FK___Profile__id_Typ__7D439ABD">
+            <End Role="C_Type" EntitySet="C_Type" />
+            <End Role="C_Profile" EntitySet="C_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__idFood__114A936A" Association="HackSpaceDBModel.FK___Profile__idFood__114A936A">
+            <End Role="Food_pref" EntitySet="Food_pref" />
+            <End Role="C_Profile" EntitySet="C_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__idFood__7F2BE32F" Association="HackSpaceDBModel.FK___Profile__idFood__7F2BE32F">
+            <End Role="Food_pref" EntitySet="Food_pref" />
+            <End Role="C_Profile" EntitySet="C_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__idSize__10566F31" Association="HackSpaceDBModel.FK___Profile__idSize__10566F31">
+            <End Role="Size_tshirt" EntitySet="Size_tshirt" />
+            <End Role="C_Profile" EntitySet="C_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK___Profile__idSize__7E37BEF6" Association="HackSpaceDBModel.FK___Profile__idSize__7E37BEF6">
+            <End Role="Size_tshirt" EntitySet="Size_tshirt" />
+            <End Role="C_Profile" EntitySet="C_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_skill__id_Pr__208CD6FA" Association="HackSpaceDBModel.FK__has_skill__id_Pr__208CD6FA">
+            <End Role="C_Profile" EntitySet="C_Profile" />
+            <End Role="has_skills" EntitySet="has_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK__has_skill__name___2180FB33" Association="HackSpaceDBModel.FK__has_skill__name___2180FB33">
+            <End Role="Skill" EntitySet="Skills" />
+            <End Role="has_skills" EntitySet="has_skills" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_AspNetUserClaims_user_AspNetUsers_UserId" Association="HackSpaceDBModel.FK_user_AspNetUserClaims_user_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_AspNetUserLogins_user_AspNetUsers_UserId" Association="HackSpaceDBModel.FK_user_AspNetUserLogins_user_AspNetUsers_UserId">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="HackSpaceDBModel.AspNetUserRoles">
+            <End Role="AspNetRole" EntitySet="AspNetRoles" />
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C_Partner">
+          <Key>
+            <PropertyRef Name="id_Partner" />
+          </Key>
+          <Property Name="id_Partner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="reward_proposal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prefer_thematic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="needs" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Profile" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK___Partner__id_Pro__04E4BC85" FromRole="C_Partner" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK___Partner__id_Pro__17036CC0" FromRole="C_Partner" ToRole="C_Profile" />
+        </EntityType>
+        <EntityType Name="Expert">
+          <Key>
+            <PropertyRef Name="idExpert" />
+          </Key>
+          <Property Name="idExpert" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="expertise" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="availabilities" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hourly_rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Profile" Type="Int32" Nullable="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK__Expert__id_Profi__00200768" FromRole="Expert" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK__Expert__id_Profi__123EB7A3" FromRole="Expert" ToRole="C_Profile" />
+          <NavigationProperty Name="has_expert" Relationship="HackSpaceDBModel.FK__has_exper__idExp__236943A5" FromRole="Expert" ToRole="has_expert" />
+        </EntityType>
+        <EntityType Name="Facilitator">
+          <Key>
+            <PropertyRef Name="idFacilitator" />
+          </Key>
+          <Property Name="idFacilitator" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="availabilities" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hourly_rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="urlFcb" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="urlTwit" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="urlLin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Profile" Type="Int32" Nullable="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK__Facilitat__id_Pr__02084FDA" FromRole="Facilitator" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK__Facilitat__id_Pr__14270015" FromRole="Facilitator" ToRole="C_Profile" />
+          <NavigationProperty Name="Hackathons" Relationship="HackSpaceDBModel.FK__Hackathon__idFac__09A971A2" FromRole="Facilitator" ToRole="Hackathon" />
+          <NavigationProperty Name="Hackathons1" Relationship="HackSpaceDBModel.FK__Hackathon__idFac__1BC821DD" FromRole="Facilitator" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="Goodie">
+          <Key>
+            <PropertyRef Name="idGoodie" />
+          </Key>
+          <Property Name="idGoodie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameGoodie" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descGoodie" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="has_goodie" Relationship="HackSpaceDBModel.FK__has_goodi__idGoo__29221CFB" FromRole="Goodie" ToRole="has_goodie" />
+        </EntityType>
+        <EntityType Name="Hackathon">
+          <Key>
+            <PropertyRef Name="idHackathon" />
+          </Key>
+          <Property Name="idHackathon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameHack" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="image_" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idTheme" Type="Int32" Nullable="false" />
+          <Property Name="idProg" Type="Int32" Nullable="false" />
+          <Property Name="idLoc" Type="Int32" Nullable="false" />
+          <Property Name="idFacilitator" Type="Int32" Nullable="false" />
+          <Property Name="idPayment" Type="Int32" />
+          <NavigationProperty Name="Facilitator" Relationship="HackSpaceDBModel.FK__Hackathon__idFac__09A971A2" FromRole="Hackathon" ToRole="Facilitator" />
+          <NavigationProperty Name="Facilitator1" Relationship="HackSpaceDBModel.FK__Hackathon__idFac__1BC821DD" FromRole="Hackathon" ToRole="Facilitator" />
+          <NavigationProperty Name="Delivers" Relationship="HackSpaceDBModel.FK__Deliver__idHacka__0C85DE4D" FromRole="Hackathon" ToRole="Deliver" />
+          <NavigationProperty Name="Delivers1" Relationship="HackSpaceDBModel.FK__Deliver__idHacka__1EA48E88" FromRole="Hackathon" ToRole="Deliver" />
+          <NavigationProperty Name="Explores" Relationship="HackSpaceDBModel.FK__Explore__idHacka__0A9D95DB" FromRole="Hackathon" ToRole="Explore" />
+          <NavigationProperty Name="Explores1" Relationship="HackSpaceDBModel.FK__Explore__idHacka__1CBC4616" FromRole="Hackathon" ToRole="Explore" />
+          <NavigationProperty Name="Location_" Relationship="HackSpaceDBModel.FK__Hackathon__idLoc__07C12930" FromRole="Hackathon" ToRole="Location_" />
+          <NavigationProperty Name="Location_1" Relationship="HackSpaceDBModel.FK__Hackathon__idLoc__19DFD96B" FromRole="Hackathon" ToRole="Location_" />
+          <NavigationProperty Name="Payment" Relationship="HackSpaceDBModel.FK__Hackathon__idPay__08B54D69" FromRole="Hackathon" ToRole="Payment" />
+          <NavigationProperty Name="Payment1" Relationship="HackSpaceDBModel.FK__Hackathon__idPay__1AD3FDA4" FromRole="Hackathon" ToRole="Payment" />
+          <NavigationProperty Name="Program" Relationship="HackSpaceDBModel.FK__Hackathon__idPro__06CD04F7" FromRole="Hackathon" ToRole="Program" />
+          <NavigationProperty Name="Program1" Relationship="HackSpaceDBModel.FK__Hackathon__idPro__18EBB532" FromRole="Hackathon" ToRole="Program" />
+          <NavigationProperty Name="Theme" Relationship="HackSpaceDBModel.FK__Hackathon__idThe__05D8E0BE" FromRole="Hackathon" ToRole="Theme" />
+          <NavigationProperty Name="Theme1" Relationship="HackSpaceDBModel.FK__Hackathon__idThe__17F790F9" FromRole="Hackathon" ToRole="Theme" />
+          <NavigationProperty Name="has_expert" Relationship="HackSpaceDBModel.FK__has_exper__idHac__22751F6C" FromRole="Hackathon" ToRole="has_expert" />
+          <NavigationProperty Name="has_goodie" Relationship="HackSpaceDBModel.FK__has_goodi__idHac__282DF8C2" FromRole="Hackathon" ToRole="has_goodie" />
+          <NavigationProperty Name="has_participant" Relationship="HackSpaceDBModel.FK__has_parti__idHac__2B0A656D" FromRole="Hackathon" ToRole="has_participant" />
+          <NavigationProperty Name="has_reward" Relationship="HackSpaceDBModel.FK__has_rewar__idHac__2645B050" FromRole="Hackathon" ToRole="has_reward" />
+          <NavigationProperty Name="has_sponsor" Relationship="HackSpaceDBModel.FK__has_spons__idHac__245D67DE" FromRole="Hackathon" ToRole="has_sponsor" />
+          <NavigationProperty Name="Launches" Relationship="HackSpaceDBModel.FK__Launch__idHackat__0D7A0286" FromRole="Hackathon" ToRole="Launch" />
+          <NavigationProperty Name="Launches1" Relationship="HackSpaceDBModel.FK__Launch__idHackat__1F98B2C1" FromRole="Hackathon" ToRole="Launch" />
+          <NavigationProperty Name="Pitches" Relationship="HackSpaceDBModel.FK__Pitch__idHackath__0B91BA14" FromRole="Hackathon" ToRole="Pitch" />
+          <NavigationProperty Name="Pitches1" Relationship="HackSpaceDBModel.FK__Pitch__idHackath__1DB06A4F" FromRole="Hackathon" ToRole="Pitch" />
+        </EntityType>
+        <EntityType Name="has_expert">
+          <Key>
+            <PropertyRef Name="idhas_expert" />
+          </Key>
+          <Property Name="idhas_expert" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idHackathon" Type="Int32" Nullable="false" />
+          <Property Name="idExpert" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Expert" Relationship="HackSpaceDBModel.FK__has_exper__idExp__236943A5" FromRole="has_expert" ToRole="Expert" />
+          <NavigationProperty Name="Hackathon" Relationship="HackSpaceDBModel.FK__has_exper__idHac__22751F6C" FromRole="has_expert" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="has_goodie">
+          <Key>
+            <PropertyRef Name="idhas_goodie" />
+          </Key>
+          <Property Name="idhas_goodie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idHackathon" Type="Int32" Nullable="false" />
+          <Property Name="idGoodie" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Goodie" Relationship="HackSpaceDBModel.FK__has_goodi__idGoo__29221CFB" FromRole="has_goodie" ToRole="Goodie" />
+          <NavigationProperty Name="Hackathon" Relationship="HackSpaceDBModel.FK__has_goodi__idHac__282DF8C2" FromRole="has_goodie" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="has_participant">
+          <Key>
+            <PropertyRef Name="idhas_participant" />
+          </Key>
+          <Property Name="idhas_participant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idParticipant" Type="Int32" Nullable="false" />
+          <Property Name="idHackathon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hackathon" Relationship="HackSpaceDBModel.FK__has_parti__idHac__2B0A656D" FromRole="has_participant" ToRole="Hackathon" />
+          <NavigationProperty Name="Participant" Relationship="HackSpaceDBModel.FK__has_parti__idPar__2A164134" FromRole="has_participant" ToRole="Participant" />
+        </EntityType>
+        <EntityType Name="has_reward">
+          <Key>
+            <PropertyRef Name="idhas_reward" />
+          </Key>
+          <Property Name="idhas_reward" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idHackathon" Type="Int32" Nullable="false" />
+          <Property Name="idReward" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hackathon" Relationship="HackSpaceDBModel.FK__has_rewar__idHac__2645B050" FromRole="has_reward" ToRole="Hackathon" />
+          <NavigationProperty Name="Reward" Relationship="HackSpaceDBModel.FK__has_rewar__idRew__2739D489" FromRole="has_reward" ToRole="Reward" />
+        </EntityType>
+        <EntityType Name="has_sponsor">
+          <Key>
+            <PropertyRef Name="idhas_sponsor" />
+          </Key>
+          <Property Name="idhas_sponsor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idHackathon" Type="Int32" Nullable="false" />
+          <Property Name="idSponsor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hackathon" Relationship="HackSpaceDBModel.FK__has_spons__idHac__245D67DE" FromRole="has_sponsor" ToRole="Hackathon" />
+          <NavigationProperty Name="Sponsor" Relationship="HackSpaceDBModel.FK__has_spons__idSpo__25518C17" FromRole="has_sponsor" ToRole="Sponsor" />
+        </EntityType>
+        <EntityType Name="Jury">
+          <Key>
+            <PropertyRef Name="idJury" />
+          </Key>
+          <Property Name="idJury" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="availabilities" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hourly_rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Profile" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK__Jury__id_Profile__03F0984C" FromRole="Jury" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK__Jury__id_Profile__160F4887" FromRole="Jury" ToRole="C_Profile" />
+        </EntityType>
+        <EntityType Name="Location_">
+          <Key>
+            <PropertyRef Name="idLoc" />
+          </Key>
+          <Property Name="idLoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameLoc" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descLoc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Hackathons" Relationship="HackSpaceDBModel.FK__Hackathon__idLoc__07C12930" FromRole="Location_" ToRole="Hackathon" />
+          <NavigationProperty Name="Hackathons1" Relationship="HackSpaceDBModel.FK__Hackathon__idLoc__19DFD96B" FromRole="Location_" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="idParticipant" />
+          </Key>
+          <Property Name="idParticipant" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="has_participant" Relationship="HackSpaceDBModel.FK__has_parti__idPar__2A164134" FromRole="Participant" ToRole="has_participant" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="idPayment" />
+          </Key>
+          <Property Name="idPayment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namePayment" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descPayment" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Hackathons" Relationship="HackSpaceDBModel.FK__Hackathon__idPay__08B54D69" FromRole="Payment" ToRole="Hackathon" />
+          <NavigationProperty Name="Hackathons1" Relationship="HackSpaceDBModel.FK__Hackathon__idPay__1AD3FDA4" FromRole="Payment" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="Program">
+          <Key>
+            <PropertyRef Name="idProg" />
+          </Key>
+          <Property Name="idProg" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameProg" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descProg" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Hackathons" Relationship="HackSpaceDBModel.FK__Hackathon__idPro__06CD04F7" FromRole="Program" ToRole="Hackathon" />
+          <NavigationProperty Name="Hackathons1" Relationship="HackSpaceDBModel.FK__Hackathon__idPro__18EBB532" FromRole="Program" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="Reward">
+          <Key>
+            <PropertyRef Name="idReward" />
+          </Key>
+          <Property Name="idReward" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameReward" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descReward" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="has_reward" Relationship="HackSpaceDBModel.FK__has_rewar__idRew__2739D489" FromRole="Reward" ToRole="has_reward" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="idSponsor" />
+          </Key>
+          <Property Name="idSponsor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="max_budget" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="prefer_thematic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="needs" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="id_Profile" Type="Int32" Nullable="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="has_sponsor" Relationship="HackSpaceDBModel.FK__has_spons__idSpo__25518C17" FromRole="Sponsor" ToRole="has_sponsor" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK__Sponsor__id_Prof__01142BA1" FromRole="Sponsor" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK__Sponsor__id_Prof__1332DBDC" FromRole="Sponsor" ToRole="C_Profile" />
+        </EntityType>
+        <EntityType Name="Super_hero">
+          <Key>
+            <PropertyRef Name="idSuper_hero" />
+          </Key>
+          <Property Name="idSuper_hero" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="availabilities" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bio" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="hourly_rate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Profile" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK__Super_her__id_Pr__02FC7413" FromRole="Super_hero" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK__Super_her__id_Pr__151B244E" FromRole="Super_hero" ToRole="C_Profile" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="idTheme" />
+          </Key>
+          <Property Name="idTheme" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nameTheme" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descTheme" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsSelected" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Hackathons" Relationship="HackSpaceDBModel.FK__Hackathon__idThe__05D8E0BE" FromRole="Theme" ToRole="Hackathon" />
+          <NavigationProperty Name="Hackathons1" Relationship="HackSpaceDBModel.FK__Hackathon__idThe__17F790F9" FromRole="Theme" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="C_Profile">
+          <Key>
+            <PropertyRef Name="id_Profile" />
+          </Key>
+          <Property Name="id_Profile" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="firstname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lastname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_AspNetUsers" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="company" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="id_Type" Type="Int32" Nullable="false" />
+          <Property Name="idSize_tshirt" Type="Int32" Nullable="false" />
+          <Property Name="idFood_pref" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="C_Partner" Relationship="HackSpaceDBModel.FK___Partner__id_Pro__04E4BC85" FromRole="C_Profile" ToRole="C_Partner" />
+          <NavigationProperty Name="C_Partner1" Relationship="HackSpaceDBModel.FK___Partner__id_Pro__17036CC0" FromRole="C_Profile" ToRole="C_Partner" />
+          <NavigationProperty Name="Experts" Relationship="HackSpaceDBModel.FK__Expert__id_Profi__00200768" FromRole="C_Profile" ToRole="Expert" />
+          <NavigationProperty Name="Experts1" Relationship="HackSpaceDBModel.FK__Expert__id_Profi__123EB7A3" FromRole="C_Profile" ToRole="Expert" />
+          <NavigationProperty Name="Facilitators" Relationship="HackSpaceDBModel.FK__Facilitat__id_Pr__02084FDA" FromRole="C_Profile" ToRole="Facilitator" />
+          <NavigationProperty Name="Facilitators1" Relationship="HackSpaceDBModel.FK__Facilitat__id_Pr__14270015" FromRole="C_Profile" ToRole="Facilitator" />
+          <NavigationProperty Name="Juries" Relationship="HackSpaceDBModel.FK__Jury__id_Profile__03F0984C" FromRole="C_Profile" ToRole="Jury" />
+          <NavigationProperty Name="Juries1" Relationship="HackSpaceDBModel.FK__Jury__id_Profile__160F4887" FromRole="C_Profile" ToRole="Jury" />
+          <NavigationProperty Name="Sponsors" Relationship="HackSpaceDBModel.FK__Sponsor__id_Prof__01142BA1" FromRole="C_Profile" ToRole="Sponsor" />
+          <NavigationProperty Name="Sponsors1" Relationship="HackSpaceDBModel.FK__Sponsor__id_Prof__1332DBDC" FromRole="C_Profile" ToRole="Sponsor" />
+          <NavigationProperty Name="Super_hero" Relationship="HackSpaceDBModel.FK__Super_her__id_Pr__02FC7413" FromRole="C_Profile" ToRole="Super_hero" />
+          <NavigationProperty Name="Super_hero1" Relationship="HackSpaceDBModel.FK__Super_her__id_Pr__151B244E" FromRole="C_Profile" ToRole="Super_hero" />
+          <NavigationProperty Name="AspNetUser" Relationship="HackSpaceDBModel.FK___Profile__id_Asp__0E6E26BF" FromRole="C_Profile" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser1" Relationship="HackSpaceDBModel.FK___Profile__id_Asp__7C4F7684" FromRole="C_Profile" ToRole="AspNetUser" />
+          <NavigationProperty Name="C_Type" Relationship="HackSpaceDBModel.FK___Profile__id_Typ__0F624AF8" FromRole="C_Profile" ToRole="C_Type" />
+          <NavigationProperty Name="C_Type1" Relationship="HackSpaceDBModel.FK___Profile__id_Typ__7D439ABD" FromRole="C_Profile" ToRole="C_Type" />
+          <NavigationProperty Name="Food_pref" Relationship="HackSpaceDBModel.FK___Profile__idFood__114A936A" FromRole="C_Profile" ToRole="Food_pref" />
+          <NavigationProperty Name="Food_pref1" Relationship="HackSpaceDBModel.FK___Profile__idFood__7F2BE32F" FromRole="C_Profile" ToRole="Food_pref" />
+          <NavigationProperty Name="Size_tshirt" Relationship="HackSpaceDBModel.FK___Profile__idSize__10566F31" FromRole="C_Profile" ToRole="Size_tshirt" />
+          <NavigationProperty Name="Size_tshirt1" Relationship="HackSpaceDBModel.FK___Profile__idSize__7E37BEF6" FromRole="C_Profile" ToRole="Size_tshirt" />
+          <NavigationProperty Name="has_skills" Relationship="HackSpaceDBModel.FK__has_skill__id_Pr__208CD6FA" FromRole="C_Profile" ToRole="has_skills" />
+        </EntityType>
+        <EntityType Name="C_Type">
+          <Key>
+            <PropertyRef Name="id_Type" />
+          </Key>
+          <Property Name="id_Type" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK___Profile__id_Typ__0F624AF8" FromRole="C_Type" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK___Profile__id_Typ__7D439ABD" FromRole="C_Type" ToRole="C_Profile" />
+        </EntityType>
+        <EntityType Name="Food_pref">
+          <Key>
+            <PropertyRef Name="idFood_pref" />
+          </Key>
+          <Property Name="idFood_pref" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_food" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK___Profile__idFood__114A936A" FromRole="Food_pref" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK___Profile__idFood__7F2BE32F" FromRole="Food_pref" ToRole="C_Profile" />
+        </EntityType>
+        <EntityType Name="has_skills">
+          <Key>
+            <PropertyRef Name="idhas_skills" />
+          </Key>
+          <Property Name="idhas_skills" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_Profile" Type="Int32" Nullable="false" />
+          <Property Name="name_skills" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK__has_skill__id_Pr__208CD6FA" FromRole="has_skills" ToRole="C_Profile" />
+          <NavigationProperty Name="Skill" Relationship="HackSpaceDBModel.FK__has_skill__name___2180FB33" FromRole="has_skills" ToRole="Skill" />
+        </EntityType>
+        <EntityType Name="Size_tshirt">
+          <Key>
+            <PropertyRef Name="idSize_tshirt" />
+          </Key>
+          <Property Name="idSize_tshirt" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name_size" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK___Profile__idSize__10566F31" FromRole="Size_tshirt" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK___Profile__idSize__7E37BEF6" FromRole="Size_tshirt" ToRole="C_Profile" />
+        </EntityType>
+        <EntityType Name="Skill">
+          <Key>
+            <PropertyRef Name="name_skills" />
+          </Key>
+          <Property Name="name_skills" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="has_skills" Relationship="HackSpaceDBModel.FK__has_skill__name___2180FB33" FromRole="Skill" ToRole="has_skills" />
+        </EntityType>
+        <EntityType Name="Deliver">
+          <Key>
+            <PropertyRef Name="idDeliver" />
+          </Key>
+          <Property Name="idDeliver" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descDeliver" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idHackathon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hackathon" Relationship="HackSpaceDBModel.FK__Deliver__idHacka__0C85DE4D" FromRole="Deliver" ToRole="Hackathon" />
+          <NavigationProperty Name="Hackathon1" Relationship="HackSpaceDBModel.FK__Deliver__idHacka__1EA48E88" FromRole="Deliver" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="Explore">
+          <Key>
+            <PropertyRef Name="idExplore" />
+          </Key>
+          <Property Name="idExplore" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descExplore" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="video" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idHackathon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hackathon" Relationship="HackSpaceDBModel.FK__Explore__idHacka__0A9D95DB" FromRole="Explore" ToRole="Hackathon" />
+          <NavigationProperty Name="Hackathon1" Relationship="HackSpaceDBModel.FK__Explore__idHacka__1CBC4616" FromRole="Explore" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="Launch">
+          <Key>
+            <PropertyRef Name="idLaunch" />
+          </Key>
+          <Property Name="idLaunch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="descLaunch" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="logo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idHackathon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hackathon" Relationship="HackSpaceDBModel.FK__Launch__idHackat__0D7A0286" FromRole="Launch" ToRole="Hackathon" />
+          <NavigationProperty Name="Hackathon1" Relationship="HackSpaceDBModel.FK__Launch__idHackat__1F98B2C1" FromRole="Launch" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="Pitch">
+          <Key>
+            <PropertyRef Name="idPitch" />
+          </Key>
+          <Property Name="idPitch" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="video" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="idHackathon" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hackathon" Relationship="HackSpaceDBModel.FK__Pitch__idHackath__0B91BA14" FromRole="Pitch" ToRole="Hackathon" />
+          <NavigationProperty Name="Hackathon1" Relationship="HackSpaceDBModel.FK__Pitch__idHackath__1DB06A4F" FromRole="Pitch" ToRole="Hackathon" />
+        </EntityType>
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="HackSpaceDBModel.AspNetUserRoles" FromRole="AspNetRole" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="HackSpaceDBModel.FK_user_AspNetUserClaims_user_AspNetUsers_UserId" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="HackSpaceDBModel.FK_user_AspNetUserLogins_user_AspNetUsers_UserId" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="C_Profile" Relationship="HackSpaceDBModel.FK___Profile__id_Asp__0E6E26BF" FromRole="AspNetUser" ToRole="C_Profile" />
+          <NavigationProperty Name="C_Profile1" Relationship="HackSpaceDBModel.FK___Profile__id_Asp__7C4F7684" FromRole="AspNetUser" ToRole="C_Profile" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="HackSpaceDBModel.FK_user_AspNetUserClaims_user_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="HackSpaceDBModel.FK_user_AspNetUserLogins_user_AspNetUsers_UserId" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+          <NavigationProperty Name="AspNetRoles" Relationship="HackSpaceDBModel.AspNetUserRoles" FromRole="AspNetUser" ToRole="AspNetRole" />
+        </EntityType>
+        <Association Name="FK___Partner__id_Pro__04E4BC85">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Partner" Role="C_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="C_Partner">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Partner__id_Pro__17036CC0">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Partner" Role="C_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="C_Partner">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Expert__id_Profi__00200768">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Expert" Role="Expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Expert">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Expert__id_Profi__123EB7A3">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Expert" Role="Expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Expert">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_exper__idExp__236943A5">
+          <End Type="HackSpaceDBModel.Expert" Role="Expert" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_expert" Role="has_expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expert">
+              <PropertyRef Name="idExpert" />
+            </Principal>
+            <Dependent Role="has_expert">
+              <PropertyRef Name="idExpert" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facilitat__id_Pr__02084FDA">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Facilitator" Role="Facilitator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Facilitator">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Facilitat__id_Pr__14270015">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Facilitator" Role="Facilitator" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Facilitator">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idFac__09A971A2">
+          <End Type="HackSpaceDBModel.Facilitator" Role="Facilitator" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facilitator">
+              <PropertyRef Name="idFacilitator" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idFacilitator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idFac__1BC821DD">
+          <End Type="HackSpaceDBModel.Facilitator" Role="Facilitator" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Facilitator">
+              <PropertyRef Name="idFacilitator" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idFacilitator" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_goodi__idGoo__29221CFB">
+          <End Type="HackSpaceDBModel.Goodie" Role="Goodie" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_goodie" Role="has_goodie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Goodie">
+              <PropertyRef Name="idGoodie" />
+            </Principal>
+            <Dependent Role="has_goodie">
+              <PropertyRef Name="idGoodie" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliver__idHacka__0C85DE4D">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Deliver" Role="Deliver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Deliver">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Deliver__idHacka__1EA48E88">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Deliver" Role="Deliver" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Deliver">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Explore__idHacka__0A9D95DB">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Explore" Role="Explore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Explore">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Explore__idHacka__1CBC4616">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Explore" Role="Explore" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Explore">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idLoc__07C12930">
+          <End Type="HackSpaceDBModel.Location_" Role="Location_" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location_">
+              <PropertyRef Name="idLoc" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idLoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idLoc__19DFD96B">
+          <End Type="HackSpaceDBModel.Location_" Role="Location_" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Location_">
+              <PropertyRef Name="idLoc" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idLoc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idPay__08B54D69">
+          <End Type="HackSpaceDBModel.Payment" Role="Payment" Multiplicity="0..1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="idPayment" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idPay__1AD3FDA4">
+          <End Type="HackSpaceDBModel.Payment" Role="Payment" Multiplicity="0..1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="idPayment" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idPayment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idPro__06CD04F7">
+          <End Type="HackSpaceDBModel.Program" Role="Program" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="idProg" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idProg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idPro__18EBB532">
+          <End Type="HackSpaceDBModel.Program" Role="Program" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="idProg" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idProg" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idThe__05D8E0BE">
+          <End Type="HackSpaceDBModel.Theme" Role="Theme" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="idTheme" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idTheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Hackathon__idThe__17F790F9">
+          <End Type="HackSpaceDBModel.Theme" Role="Theme" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="idTheme" />
+            </Principal>
+            <Dependent Role="Hackathon">
+              <PropertyRef Name="idTheme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_exper__idHac__22751F6C">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_expert" Role="has_expert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_expert">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_goodi__idHac__282DF8C2">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_goodie" Role="has_goodie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_goodie">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_parti__idHac__2B0A656D">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_participant" Role="has_participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_participant">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_rewar__idHac__2645B050">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_reward" Role="has_reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_reward">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_spons__idHac__245D67DE">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_sponsor" Role="has_sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="has_sponsor">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Launch__idHackat__0D7A0286">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Launch" Role="Launch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Launch">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Launch__idHackat__1F98B2C1">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Launch" Role="Launch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Launch">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pitch__idHackath__0B91BA14">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Pitch" Role="Pitch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Pitch">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Pitch__idHackath__1DB06A4F">
+          <End Type="HackSpaceDBModel.Hackathon" Role="Hackathon" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Pitch" Role="Pitch" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hackathon">
+              <PropertyRef Name="idHackathon" />
+            </Principal>
+            <Dependent Role="Pitch">
+              <PropertyRef Name="idHackathon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_parti__idPar__2A164134">
+          <End Type="HackSpaceDBModel.Participant" Role="Participant" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_participant" Role="has_participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="idParticipant" />
+            </Principal>
+            <Dependent Role="has_participant">
+              <PropertyRef Name="idParticipant" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_rewar__idRew__2739D489">
+          <End Type="HackSpaceDBModel.Reward" Role="Reward" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_reward" Role="has_reward" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reward">
+              <PropertyRef Name="idReward" />
+            </Principal>
+            <Dependent Role="has_reward">
+              <PropertyRef Name="idReward" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_spons__idSpo__25518C17">
+          <End Type="HackSpaceDBModel.Sponsor" Role="Sponsor" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_sponsor" Role="has_sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="idSponsor" />
+            </Principal>
+            <Dependent Role="has_sponsor">
+              <PropertyRef Name="idSponsor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jury__id_Profile__03F0984C">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Jury" Role="Jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Jury">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Jury__id_Profile__160F4887">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Jury" Role="Jury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Jury">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sponsor__id_Prof__01142BA1">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Sponsor" Role="Sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Sponsor">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sponsor__id_Prof__1332DBDC">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Sponsor" Role="Sponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Sponsor">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Super_her__id_Pr__02FC7413">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Super_hero" Role="Super_hero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Super_hero">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Super_her__id_Pr__151B244E">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.Super_hero" Role="Super_hero" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="Super_hero">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__id_Asp__0E6E26BF">
+          <End Type="HackSpaceDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="C_Profile">
+              <PropertyRef Name="id_AspNetUsers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__id_Asp__7C4F7684">
+          <End Type="HackSpaceDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="C_Profile">
+              <PropertyRef Name="id_AspNetUsers" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__id_Typ__0F624AF8">
+          <End Type="HackSpaceDBModel.C_Type" Role="C_Type" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Type">
+              <PropertyRef Name="id_Type" />
+            </Principal>
+            <Dependent Role="C_Profile">
+              <PropertyRef Name="id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__id_Typ__7D439ABD">
+          <End Type="HackSpaceDBModel.C_Type" Role="C_Type" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Type">
+              <PropertyRef Name="id_Type" />
+            </Principal>
+            <Dependent Role="C_Profile">
+              <PropertyRef Name="id_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__idFood__114A936A">
+          <End Type="HackSpaceDBModel.Food_pref" Role="Food_pref" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food_pref">
+              <PropertyRef Name="idFood_pref" />
+            </Principal>
+            <Dependent Role="C_Profile">
+              <PropertyRef Name="idFood_pref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__idFood__7F2BE32F">
+          <End Type="HackSpaceDBModel.Food_pref" Role="Food_pref" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Food_pref">
+              <PropertyRef Name="idFood_pref" />
+            </Principal>
+            <Dependent Role="C_Profile">
+              <PropertyRef Name="idFood_pref" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__idSize__10566F31">
+          <End Type="HackSpaceDBModel.Size_tshirt" Role="Size_tshirt" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size_tshirt">
+              <PropertyRef Name="idSize_tshirt" />
+            </Principal>
+            <Dependent Role="C_Profile">
+              <PropertyRef Name="idSize_tshirt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK___Profile__idSize__7E37BEF6">
+          <End Type="HackSpaceDBModel.Size_tshirt" Role="Size_tshirt" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Size_tshirt">
+              <PropertyRef Name="idSize_tshirt" />
+            </Principal>
+            <Dependent Role="C_Profile">
+              <PropertyRef Name="idSize_tshirt" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_skill__id_Pr__208CD6FA">
+          <End Type="HackSpaceDBModel.C_Profile" Role="C_Profile" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_skills" Role="has_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="C_Profile">
+              <PropertyRef Name="id_Profile" />
+            </Principal>
+            <Dependent Role="has_skills">
+              <PropertyRef Name="id_Profile" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__has_skill__name___2180FB33">
+          <End Type="HackSpaceDBModel.Skill" Role="Skill" Multiplicity="1" />
+          <End Type="HackSpaceDBModel.has_skills" Role="has_skills" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Skill">
+              <PropertyRef Name="name_skills" />
+            </Principal>
+            <Dependent Role="has_skills">
+              <PropertyRef Name="name_skills" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_AspNetUserClaims_user_AspNetUsers_UserId">
+          <End Type="HackSpaceDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HackSpaceDBModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaim">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_AspNetUserLogins_user_AspNetUsers_UserId">
+          <End Type="HackSpaceDBModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HackSpaceDBModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogin">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Type="HackSpaceDBModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+          <End Type="HackSpaceDBModel.AspNetUser" Role="AspNetUser" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HackSpaceDBModelStoreContainer" CdmEntityContainer="HackSpaceDBEntities">
+          <EntitySetMapping Name="C_Partner">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.C_Partner">
+              <MappingFragment StoreEntitySet="_Partner">
+                <ScalarProperty Name="id_Profile" ColumnName="id_Profile" />
+                <ScalarProperty Name="needs" ColumnName="needs" />
+                <ScalarProperty Name="prefer_thematic" ColumnName="prefer_thematic" />
+                <ScalarProperty Name="reward_proposal" ColumnName="reward_proposal" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="id_Partner" ColumnName="id_Partner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Experts">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Expert">
+              <MappingFragment StoreEntitySet="Expert">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="id_Profile" ColumnName="id_Profile" />
+                <ScalarProperty Name="hourly_rate" ColumnName="hourly_rate" />
+                <ScalarProperty Name="bio" ColumnName="bio" />
+                <ScalarProperty Name="availabilities" ColumnName="availabilities" />
+                <ScalarProperty Name="expertise" ColumnName="expertise" />
+                <ScalarProperty Name="idExpert" ColumnName="idExpert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facilitators">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Facilitator">
+              <MappingFragment StoreEntitySet="Facilitator">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="id_Profile" ColumnName="id_Profile" />
+                <ScalarProperty Name="urlLin" ColumnName="urlLin" />
+                <ScalarProperty Name="urlTwit" ColumnName="urlTwit" />
+                <ScalarProperty Name="urlFcb" ColumnName="urlFcb" />
+                <ScalarProperty Name="website" ColumnName="website" />
+                <ScalarProperty Name="hourly_rate" ColumnName="hourly_rate" />
+                <ScalarProperty Name="bio" ColumnName="bio" />
+                <ScalarProperty Name="availabilities" ColumnName="availabilities" />
+                <ScalarProperty Name="idFacilitator" ColumnName="idFacilitator" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goodies">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Goodie">
+              <MappingFragment StoreEntitySet="Goodie">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="descGoodie" ColumnName="descGoodie" />
+                <ScalarProperty Name="nameGoodie" ColumnName="nameGoodie" />
+                <ScalarProperty Name="idGoodie" ColumnName="idGoodie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hackathons">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Hackathon">
+              <MappingFragment StoreEntitySet="Hackathon">
+                <ScalarProperty Name="idPayment" ColumnName="idPayment" />
+                <ScalarProperty Name="idFacilitator" ColumnName="idFacilitator" />
+                <ScalarProperty Name="idLoc" ColumnName="idLoc" />
+                <ScalarProperty Name="idProg" ColumnName="idProg" />
+                <ScalarProperty Name="idTheme" ColumnName="idTheme" />
+                <ScalarProperty Name="image_" ColumnName="image_" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="nameHack" ColumnName="nameHack" />
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="has_expert">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.has_expert">
+              <MappingFragment StoreEntitySet="has_expert">
+                <ScalarProperty Name="idExpert" ColumnName="idExpert" />
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+                <ScalarProperty Name="idhas_expert" ColumnName="idhas_expert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="has_goodie">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.has_goodie">
+              <MappingFragment StoreEntitySet="has_goodie">
+                <ScalarProperty Name="idGoodie" ColumnName="idGoodie" />
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+                <ScalarProperty Name="idhas_goodie" ColumnName="idhas_goodie" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="has_participant">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.has_participant">
+              <MappingFragment StoreEntitySet="has_participant">
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+                <ScalarProperty Name="idParticipant" ColumnName="idParticipant" />
+                <ScalarProperty Name="idhas_participant" ColumnName="idhas_participant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="has_reward">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.has_reward">
+              <MappingFragment StoreEntitySet="has_reward">
+                <ScalarProperty Name="idReward" ColumnName="idReward" />
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+                <ScalarProperty Name="idhas_reward" ColumnName="idhas_reward" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="has_sponsor">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.has_sponsor">
+              <MappingFragment StoreEntitySet="has_sponsor">
+                <ScalarProperty Name="idSponsor" ColumnName="idSponsor" />
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+                <ScalarProperty Name="idhas_sponsor" ColumnName="idhas_sponsor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Juries">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Jury">
+              <MappingFragment StoreEntitySet="Jury">
+                <ScalarProperty Name="id_Profile" ColumnName="id_Profile" />
+                <ScalarProperty Name="hourly_rate" ColumnName="hourly_rate" />
+                <ScalarProperty Name="bio" ColumnName="bio" />
+                <ScalarProperty Name="availabilities" ColumnName="availabilities" />
+                <ScalarProperty Name="idJury" ColumnName="idJury" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Location_">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Location_">
+              <MappingFragment StoreEntitySet="Location_">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="descLoc" ColumnName="descLoc" />
+                <ScalarProperty Name="nameLoc" ColumnName="nameLoc" />
+                <ScalarProperty Name="idLoc" ColumnName="idLoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participants">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Participant">
+              <MappingFragment StoreEntitySet="Participant">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="idParticipant" ColumnName="idParticipant" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="descPayment" ColumnName="descPayment" />
+                <ScalarProperty Name="namePayment" ColumnName="namePayment" />
+                <ScalarProperty Name="idPayment" ColumnName="idPayment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Programs">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Program">
+              <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="descProg" ColumnName="descProg" />
+                <ScalarProperty Name="nameProg" ColumnName="nameProg" />
+                <ScalarProperty Name="idProg" ColumnName="idProg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rewards">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Reward">
+              <MappingFragment StoreEntitySet="Reward">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="descReward" ColumnName="descReward" />
+                <ScalarProperty Name="nameReward" ColumnName="nameReward" />
+                <ScalarProperty Name="idReward" ColumnName="idReward" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sponsors">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Sponsor">
+              <MappingFragment StoreEntitySet="Sponsor">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="id_Profile" ColumnName="id_Profile" />
+                <ScalarProperty Name="needs" ColumnName="needs" />
+                <ScalarProperty Name="prefer_thematic" ColumnName="prefer_thematic" />
+                <ScalarProperty Name="max_budget" ColumnName="max_budget" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="idSponsor" ColumnName="idSponsor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Super_hero">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Super_hero">
+              <MappingFragment StoreEntitySet="Super_hero">
+                <ScalarProperty Name="id_Profile" ColumnName="id_Profile" />
+                <ScalarProperty Name="hourly_rate" ColumnName="hourly_rate" />
+                <ScalarProperty Name="bio" ColumnName="bio" />
+                <ScalarProperty Name="availabilities" ColumnName="availabilities" />
+                <ScalarProperty Name="idSuper_hero" ColumnName="idSuper_hero" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Themes">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Theme">
+              <MappingFragment StoreEntitySet="Theme">
+                <ScalarProperty Name="IsSelected" ColumnName="IsSelected" />
+                <ScalarProperty Name="descTheme" ColumnName="descTheme" />
+                <ScalarProperty Name="nameTheme" ColumnName="nameTheme" />
+                <ScalarProperty Name="idTheme" ColumnName="idTheme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Profile">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.C_Profile">
+              <MappingFragment StoreEntitySet="_Profile">
+                <ScalarProperty Name="idFood_pref" ColumnName="idFood_pref" />
+                <ScalarProperty Name="idSize_tshirt" ColumnName="idSize_tshirt" />
+                <ScalarProperty Name="id_Type" ColumnName="id_Type" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="id_AspNetUsers" ColumnName="id_AspNetUsers" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="id_Profile" ColumnName="id_Profile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C_Type">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.C_Type">
+              <MappingFragment StoreEntitySet="_Type">
+                <ScalarProperty Name="name_type" ColumnName="name_type" />
+                <ScalarProperty Name="id_Type" ColumnName="id_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Food_pref">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Food_pref">
+              <MappingFragment StoreEntitySet="Food_pref">
+                <ScalarProperty Name="name_food" ColumnName="name_food" />
+                <ScalarProperty Name="idFood_pref" ColumnName="idFood_pref" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="has_skills">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.has_skills">
+              <MappingFragment StoreEntitySet="has_skills">
+                <ScalarProperty Name="name_skills" ColumnName="name_skills" />
+                <ScalarProperty Name="id_Profile" ColumnName="id_Profile" />
+                <ScalarProperty Name="idhas_skills" ColumnName="idhas_skills" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Size_tshirt">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Size_tshirt">
+              <MappingFragment StoreEntitySet="Size_tshirt">
+                <ScalarProperty Name="name_size" ColumnName="name_size" />
+                <ScalarProperty Name="idSize_tshirt" ColumnName="idSize_tshirt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Skills">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Skill">
+              <MappingFragment StoreEntitySet="Skills">
+                <ScalarProperty Name="name_skills" ColumnName="name_skills" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delivers">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Deliver">
+              <MappingFragment StoreEntitySet="Deliver">
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="descDeliver" ColumnName="descDeliver" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="idDeliver" ColumnName="idDeliver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Explores">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Explore">
+              <MappingFragment StoreEntitySet="Explore">
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+                <ScalarProperty Name="video" ColumnName="video" />
+                <ScalarProperty Name="descExplore" ColumnName="descExplore" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="idExplore" ColumnName="idExplore" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Launches">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Launch">
+              <MappingFragment StoreEntitySet="Launch">
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+                <ScalarProperty Name="logo" ColumnName="logo" />
+                <ScalarProperty Name="descLaunch" ColumnName="descLaunch" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="idLaunch" ColumnName="idLaunch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pitches">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.Pitch">
+              <MappingFragment StoreEntitySet="Pitch">
+                <ScalarProperty Name="idHackathon" ColumnName="idHackathon" />
+                <ScalarProperty Name="video" ColumnName="video" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="idPitch" ColumnName="idPitch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="HackSpaceDBModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="HackSpaceDBModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetUser">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="AspNetRole">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

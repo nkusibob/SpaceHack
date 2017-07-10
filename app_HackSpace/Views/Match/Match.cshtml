@@ -1,0 +1,28 @@
+﻿@model IEnumerable<app_HackSpace.Models.has_participant>
+
+@{
+    ViewBag.Title = "Match";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.nameHack</h2>
+
+<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Manage", "RedirectSelectHack", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Explore", "RedirectExplore", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Pitch", "RedirectPitch", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Match", "Match", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Deliver", "RedirectDeliver", new { id = ViewBag.hackathonId })</li>
+        <li>@Html.ActionLink("Launch", "RedirectLaunch", new { id = ViewBag.hackathonId })</li>
+    </ul>
+</div>
+
+<h4>Match</h4>
+
+@foreach (var item in Model)
+{
+    <div>
+        @Html.DisplayFor(modelItem => item.Participant.UserName)
+    </div>
+}
