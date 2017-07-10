@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app_HackSpace", "app_HackSpace\app_HackSpace.csproj", "{DB607293-5A49-4F8B-81AB-ED53AACDCBE4}"
+EndProject
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "AzureCloudHackspace", "AzureCloudHackspace\AzureCloudHackspace.ccproj", "{122AF074-9879-475F-A25A-F3EC3D29B2A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB607293-5A49-4F8B-81AB-ED53AACDCBE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB607293-5A49-4F8B-81AB-ED53AACDCBE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB607293-5A49-4F8B-81AB-ED53AACDCBE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB607293-5A49-4F8B-81AB-ED53AACDCBE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{122AF074-9879-475F-A25A-F3EC3D29B2A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{122AF074-9879-475F-A25A-F3EC3D29B2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{122AF074-9879-475F-A25A-F3EC3D29B2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{122AF074-9879-475F-A25A-F3EC3D29B2A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
