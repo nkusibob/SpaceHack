@@ -12,7 +12,7 @@
 
             <h1>Find your next hacking space</h1>
             <p class="lead"></p>
-          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Search &raquo;</button>
+          <button type="button" class="btn btn-info" data-toggle="collapse" style="margin-bottom:8px" data-target="#demo">Search &raquo;</button>
           <div id="demo" class="collapse">
             <div align="center">
               <button class="btn btn-default filter-button"  data-filter="all">All</button>
@@ -43,7 +43,7 @@
             @foreach (var item in Model)
             {
                 <div class="col-lg-4 col-sm-6 col-xs-12">
-                  <div class="myfilter">
+                 
                   <div  id="nameTheme" class= '@(@Html.DisplayFor(modelItem => item.Theme.nameTheme)) &nbsp filter'>
 
                     <div class="tbc">
@@ -74,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                    </div>
+                   
                  </div>
             }
           </div>
