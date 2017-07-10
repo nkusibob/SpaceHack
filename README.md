@@ -1,2 +1,0 @@
-# HackSpace
-# HacKton
