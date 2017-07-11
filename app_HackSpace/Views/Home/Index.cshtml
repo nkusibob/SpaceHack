@@ -38,46 +38,49 @@
 
 
     <div class="container">
-        <div class="row">
-          
-            @foreach (var item in Model)
-            {
-                <div class="col-lg-4 col-sm-6 col-xs-12">
-                 
-                  <div  id="nameTheme" class= '@(@Html.DisplayFor(modelItem => item.Theme.nameTheme)) &nbsp filter'>
+      <div class="row">
 
-                    <div class="tbc">
-                        <div class="hackimg">
-                            <img src="http://via.placeholder.com/600x250" class="img-responsive" />
-                        </div>
-                        <div class="title" style="font-weight: bold; font-size:1.2em;">
-                            @Html.DisplayFor(modelItem => item.nameHack)
-                        </div>
-                        <div>
-                            @Html.DisplayFor(modelItem => item.Facilitator.C_Profile.lastname)
-                            @Html.DisplayFor(modelItem => item.Facilitator.C_Profile.firstname)
-                        </div>
-                        <div>
-                            @Html.DisplayFor(modelItem => item.Location_.nameLoc)
-                        </div>
-                        <div>
-                            @Html.DisplayNameFor(model => model.Program.nameProg)
-                        </div>
-                      
-                        <div >
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-1">
+          @foreach (var item in Model)
+          {
+            <div class="col-lg-4 col-sm-6 col-xs-12">
 
-                          @Html.DisplayFor(modelItem => item.Theme.nameTheme)
-                        </div>
-                     
-                        <div>
-                            @Html.ActionLink("Select", "SelectHack", new { id = item.idHackathon })
-                        </div>
-                    </div>
+              <div id="nameTheme" class='@(@Html.DisplayFor(modelItem => item.Theme.nameTheme)) &nbsp filter'>
+
+                <div class="tbc">
+                  <div class="hackimg">
+                    <img src="http://via.placeholder.com/600x250" class="img-responsive" />
+                  </div>
+                  <div class="title" style="font-weight: bold; font-size:1.2em;">
+                    @Html.DisplayFor(modelItem => item.nameHack)
+                  </div>
+                  <div>
+                    @Html.DisplayFor(modelItem => item.Facilitator.C_Profile.lastname)
+                    @Html.DisplayFor(modelItem => item.Facilitator.C_Profile.firstname)
+                  </div>
+                  <div>
+                    @Html.DisplayFor(modelItem => item.Location_.nameLoc)
+                  </div>
+                  <div>
+                    @Html.DisplayNameFor(model => model.Program.nameProg)
+                  </div>
+
+                  <div>
+
+                    @Html.DisplayFor(modelItem => item.Theme.nameTheme)
+                  </div>
+
+                  <div>
+                    @Html.ActionLink("Select", "SelectHack", new { id = item.idHackathon })
+                  </div>
                 </div>
-                   
-                 </div>
-            }
-          </div>
+              </div>
+
+            </div>
+          }
+        </div>
+      </div>
+
         </div>
     
 
