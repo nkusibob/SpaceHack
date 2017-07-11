@@ -6,6 +6,12 @@
   vertical-align: middle;
   display: table-cell;
 }
+.img-lg {
+  background: url(Images/Hackton.PNG)
+  no-repeat center center fixed;
+  
+  background-size: cover;
+}
 /**WITH AN ADDED BACKGROUND COLOR**/
 .btn-circle.btn-lg {
   width: 200px;
