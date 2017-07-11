@@ -40,12 +40,12 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-1">
+       
           @foreach (var item in Model)
           {
-            <div class="col-lg-4 col-sm-6 col-xs-12">
+            
 
-              <div id="nameTheme" class='@(@Html.DisplayFor(modelItem => item.Theme.nameTheme)) &nbsp filter'>
+              <div id="nameTheme" class='@(@Html.DisplayFor(modelItem => item.Theme.nameTheme)) col-lg-4 col-md-4 col-sm-4 col-xs-6 filter'>
 
                 <div class="tbc">
                   <div class="hackimg">
@@ -76,10 +76,10 @@
                 </div>
               </div>
 
-            </div>
-            <div class="clearDiv"></div>
+            
+            @*<div class="clearDiv"></div>*@
           }
-        </div>
+        
       </div>
 
         </div>
