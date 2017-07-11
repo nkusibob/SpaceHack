@@ -7,13 +7,13 @@
     if (value === "all") {
 
       $('.filter').show('1000');
-      $(".clearDiv").removeClass('clearfix')
+      $(".clearDiv").removeClass('clearfix');
     }
     else {
 
 
       $(".filter").not('.' + value).hide('3000');
-      $(".clearDiv").addClass('clearfix')
+      $(".clearDiv").addClass('clearfix');
       $('.filter').filter('.' + value).show('3000');
 
     }
