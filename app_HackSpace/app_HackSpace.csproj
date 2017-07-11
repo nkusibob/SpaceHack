@@ -390,6 +390,9 @@
     <Content Include="Content\chosen-sprite%402x.png" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
+    <Content Include="Content\HowItWorks.css" />
+    <Content Include="Content\Images\Hackton.PNG" />
+    <Content Include="Content\Images\HacktonPricing.PNG" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -555,6 +558,9 @@
     <Content Include="Views\BlobStorage\Upload.cshtml" />
     <Content Include="Views\BlobStorage\Edit.cshtml" />
     <Content Include="Views\Errors\InternalError400.cshtml" />
+    <Content Include="Views\How it works\Organize.cshtml" />
+    <Content Include="Views\How it works\Participate.cshtml" />
+    <Content Include="Views\How it works\Support.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

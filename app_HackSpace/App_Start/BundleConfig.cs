@@ -25,9 +25,12 @@ namespace app_HackSpace
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                       "~/Content/HowItWorks.css",
                       /* added one version of my style sheet here */
                       "~/Content/kate.css",
                       "~/Content/site.css"));
-        }
+      
+                
+    }
     }
 }
