@@ -1,6 +1,10 @@
 ﻿$(document).ready(function () {
 
+  $('#menu li').click(function(){
   
+    // POSITIONNER LA BARRE BLEUE
+    $('#highlighter').animate({"left": $(this).offset().left},500);
+  })
   $(".filter-button").click(function () {
     var value = $(this).attr('data-filter');
 
